@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Vanessa Ni">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Vanessa Ni">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="大创项目讲座学习笔记 Apr 25,2020 Handwritten digit recognition based on LeNet-5Record and progress.  Part 1 Introduction to CNNCNN的基本结构  输入层：最左端的图像，在计算机“眼里”是矩阵 卷积层（Convolution Layer）：CNN特有，使用ReLU激活函数。ReLU(x)&#x3D;m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeNet-5">
+<meta property="og:url" content="http://yoursite.com/2020/06/07/LeNet-5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="大创项目讲座学习笔记 Apr 25,2020 Handwritten digit recognition based on LeNet-5Record and progress.  Part 1 Introduction to CNNCNN的基本结构  输入层：最左端的图像，在计算机“眼里”是矩阵 卷积层（Convolution Layer）：CNN特有，使用ReLU激活函数。ReLU(x)&#x3D;m">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/2.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/3.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/4.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/5.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/6.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/7.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/8.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/9.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/10.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/06/07/LeNet-5/1.jpg">
+<meta property="article:published_time" content="2020-06-07T11:42:28.000Z">
+<meta property="article:modified_time" content="2020-06-07T11:42:28.000Z">
+<meta property="article:author" content="Vanessa Ni">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/07/LeNet-5/2.PNG">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <title>LeNet-5 · Vanessa&#39;s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Vannesa&#39;s Studio</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">LeNet-5</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Vannesa's Studio</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            LeNet-5
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.4k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/06/07</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <blockquote>
+<p>大创项目讲座学习笔记</p>
+<p>Apr 25,2020 Handwritten digit recognition based on LeNet-5<br>Record and progress.</p>
+</blockquote>
+<h1 id="Part-1-Introduction-to-CNN"><a href="#Part-1-Introduction-to-CNN" class="headerlink" title="Part 1 Introduction to CNN"></a>Part 1 Introduction to CNN</h1><h2 id="CNN的基本结构"><a href="#CNN的基本结构" class="headerlink" title="CNN的基本结构"></a>CNN的基本结构</h2><p><img src="/2020/06/07/LeNet-5/2.PNG" alt="Image text"></p>
+<ul>
+<li>输入层：最左端的图像，在计算机“眼里”是矩阵</li>
+<li>卷积层（Convolution Layer）：CNN特有，使用ReLU激活函数。ReLU(x)=max(0,x)（将小于0的输出值都变为0）</li>
+<li>池化层（Pooling Layer）：没有激活函数</li>
+<li>全连接层（Fully Connected Layer）</li>
+<li>输出层：使用了Softmax激活函数来做图像识别的分类。(全连接+Softmax)</li>
+</ul>
+<blockquote>
+<p>输入层与输出层中间统称为隐藏层。可以使用卷积层+卷积层或其他的组合方式，最常见的组合方式为卷积层+池化层（可重复多次出现）。</p>
+<p>如图，输入船的图像矩阵，最终有94%的可能性输出为“boat”</p>
+</blockquote>
+<h2 id="Convolution-Layer-卷积层"><a href="#Convolution-Layer-卷积层" class="headerlink" title="Convolution Layer 卷积层"></a>Convolution Layer 卷积层</h2><h3 id="二维输入"><a href="#二维输入" class="headerlink" title="二维输入"></a>二维输入</h3><p><img src="/2020/06/07/LeNet-5/3.PNG" alt="Image text"></p>
+<ul>
+<li>卷积结果：<strong>输入图像的不同局部矩阵</strong>与<strong>卷积核矩阵</strong>各个位置元素相乘，然后相加。</li>
+<li>步幅：图中为1个像素</li>
+</ul>
+<h3 id="多维输入"><a href="#多维输入" class="headerlink" title="多维输入"></a>多维输入</h3><p><img src="/2020/06/07/LeNet-5/4.PNG" alt="Image text"></p>
+<p><a href="https://cs231n.github.io/assets/conv-demo/index.html" target="_blank" rel="noopener">https://cs231n.github.io/assets/conv-demo/index.html</a></p>
+<ul>
+<li>输入3个5x5的矩阵，加上1的padding（填充0），编程3个7x7的矩阵（7x7x3的张量）</li>
+<li>卷积核W0、W1为3x3x3的张量</li>
+<li>步幅为2，每次卷积后移动2个像素的位置</li>
+<li>卷积操作：7x7x3张量与卷积核W03x3x3张量的子矩阵卷积后，结果相加后+偏移量b</li>
+<li>由于有两个卷积核，最终结果为3x3x2的张量</li>
+</ul>
+<h3 id="卷积后，使用ReLU激活函数"><a href="#卷积后，使用ReLU激活函数" class="headerlink" title="卷积后，使用ReLU激活函数"></a>卷积后，使用ReLU激活函数</h3><ul>
+<li>ReLU(x)=max(0,x)（将小于0的输出值都变为0）</li>
+</ul>
+<h2 id="Pooling-Layer-池化层"><a href="#Pooling-Layer-池化层" class="headerlink" title="Pooling Layer 池化层"></a>Pooling Layer 池化层</h2><p><img src="/2020/06/07/LeNet-5/5.PNG" alt="Image text"></p>
+<ul>
+<li>目的：压缩矩阵</li>
+<li>nxn的池化：将子矩阵每nxn个元素变成一个元素</li>
+<li>池化标准：MAX/Average</li>
+</ul>
+<h1 id="Part-2-LeNet-5"><a href="#Part-2-LeNet-5" class="headerlink" title="Part 2 LeNet-5"></a>Part 2 LeNet-5</h1><p><img src="/2020/06/07/LeNet-5/6.PNG" alt="Image text"></p>
+<h2 id="INPUT层-输入层"><a href="#INPUT层-输入层" class="headerlink" title="INPUT层-输入层"></a>INPUT层-输入层</h2><ul>
+<li>输入图像尺寸 32*32</li>
+<li>传统上不将输入层视为网络层次结构之一</li>
+</ul>
+<h2 id="C1层-卷积层"><a href="#C1层-卷积层" class="headerlink" title="C1层-卷积层"></a>C1层-卷积层</h2><ul>
+<li>输入图片：32 * 32</li>
+<li>卷积核大小：5 * 5</li>
+<li>卷积核种类：6</li>
+<li>输出featuremap大小：28 * 28 （32-5+1）=28</li>
+<li>神经元数量：28 * 28 * 6</li>
+<li>可训练参数：（5 * 5+1) * 6（每个滤波器5 * 5=25个unit参数和一个bias参数，一共6个滤波器）</li>
+<li>连接数：（5 * 5+1）* 6 * 28 * 28=122304</li>
+</ul>
+<h2 id="S2层-池化层"><a href="#S2层-池化层" class="headerlink" title="S2层-池化层"></a>S2层-池化层</h2><ul>
+<li>输入：28 * 28</li>
+<li>采样区域：2 * 2</li>
+<li>输出featureMap大小：14 * 14（28/2）</li>
+<li>神经元数量：14 * 14 * 6</li>
+<li>连接数：（2 * 2+1）* 6 * 14 * 14</li>
+</ul>
+<h2 id="C3层-卷积层"><a href="#C3层-卷积层" class="headerlink" title="C3层-卷积层"></a>C3层-卷积层</h2><ul>
+<li>输入图片：14 * 14</li>
+<li>卷积核大小：5 * 5</li>
+<li>卷积核种类：16</li>
+<li>输出featuremap大小：10 * 10 （14-5+1）=10</li>
+<li>神经元数量：10 * 10 * 16</li>
+<li>可训练参数：6 * (3 * 5 * 5+1)+6 * (4 * 5 * 5+1)+3 * (4 * 5 * 5+1)+1 * (6 * 5 * 5+1)=1516<br><img src="/2020/06/07/LeNet-5/7.PNG" alt="Image text"></li>
+<li>连接数：（5 * 5+1）* 6 * 28 * 28=122304</li>
+</ul>
+<h2 id="S4层-池化层"><a href="#S4层-池化层" class="headerlink" title="S4层-池化层"></a>S4层-池化层</h2><ul>
+<li>输入：10 * 10</li>
+<li>采样区域：2 * 2</li>
+<li>输出featureMap大小：5 * 5（10/2）</li>
+<li>神经元数量：5 * 5 * 16</li>
+<li>连接数：（2 * 2+1）* 16 * 5 * 5</li>
+</ul>
+<h2 id="C5层-卷积层"><a href="#C5层-卷积层" class="headerlink" title="C5层-卷积层"></a>C5层-卷积层</h2><ul>
+<li>输入图片：5 * 5</li>
+<li>卷积核大小：5 * 5</li>
+<li>卷积核种类：120</li>
+<li>输出featuremap大小：1 * 1 （5-5+1）=1</li>
+<li>神经元数量：1 * 1 * 120</li>
+<li>可训练参数：（16 * 5 * 5+1）* 120</li>
+<li>连接数：（16 * 5 * 5+1）* 120 * 1 * 1=48120</li>
+</ul>
+<h2 id="F6层-全连接层"><a href="#F6层-全连接层" class="headerlink" title="F6层-全连接层"></a>F6层-全连接层</h2><ul>
+<li>输入： 120维向量</li>
+<li>计算方式：计算输入向量和权重向量之间的点积，再加上一个偏置，结果通过sigmoid函数输出</li>
+<li>可训练参数:84 * (120+1)=10164</li>
+</ul>
+<h2 id="OutPut层-全连接层"><a href="#OutPut层-全连接层" class="headerlink" title="OutPut层-全连接层"></a>OutPut层-全连接层</h2><ul>
+<li>共有10个节点，分别代表数字0到9，且如果节点i的值为0，，则网络识别的结果是数字i。</li>
+</ul>
+<p><img src="/2020/06/07/LeNet-5/8.PNG" alt="Image text"></p>
+<h1 id="Part-3-Environment-Configuration-amp-Code"><a href="#Part-3-Environment-Configuration-amp-Code" class="headerlink" title="Part 3 Environment Configuration&amp;Code"></a>Part 3 Environment Configuration&amp;Code</h1><ul>
+<li>Python 3.7 <a href="https://www.runoob.com/python/python-install.html" target="_blank" rel="noopener">https://www.runoob.com/python/python-install.html</a></li>
+<li>Pycharm    <a href="https://www.cnblogs.com/dcpeng/p/9031405.html" target="_blank" rel="noopener">https://www.cnblogs.com/dcpeng/p/9031405.html</a></li>
+<li>Pytorch    Install：<a href="https://www.cnblogs.com/zhouzhiyao/p/11784055.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhouzhiyao/p/11784055.html</a></li>
+<li>Torchvision <a href="https://blog.csdn.net/tyl15827311279/article/details/88740215" target="_blank" rel="noopener">https://blog.csdn.net/tyl15827311279/article/details/88740215</a></li>
+<li>Anaconda    <a href="https://www.jianshu.com/p/e54a9e26b4e3" target="_blank" rel="noopener">https://www.jianshu.com/p/e54a9e26b4e3</a></li>
+</ul>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ul>
+<li><strong>STEP1</strong> <a href="https://www.cnblogs.com/zhouzhiyao/p/11784055.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhouzhiyao/p/11784055.html</a></li>
+<li><strong>STEP2</strong><br><img src="/2020/06/07/LeNet-5/9.PNG" alt="Image text"></li>
+</ul>
+<h2 id="调参"><a href="#调参" class="headerlink" title="调参"></a>调参</h2><ul>
+<li>第一次跑结果<br><img src="/2020/06/07/LeNet-5/10.PNG" alt="Image text"></li>
+</ul>
+<h1 id="Part-4-Learning-resources"><a href="#Part-4-Learning-resources" class="headerlink" title="Part 4 Learning resources"></a>Part 4 Learning resources</h1><ul>
+<li><strong>深度学习必看的经典课程</strong><br><a href="https://www.bilibili.com/video/BV164411m79z?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/BV164411m79z?p=1</a></li>
+<li><strong>LeNet5清晰讲解</strong><br><a href="https://www.cnblogs.com/ai-learning-blogs/p/11094039.html" target="_blank" rel="noopener">https://www.cnblogs.com/ai-learning-blogs/p/11094039.html</a><br><a href="https://cuijiahua.com/blog/2018/01/dl_3.html" target="_blank" rel="noopener">https://cuijiahua.com/blog/2018/01/dl_3.html</a></li>
+<li><strong>刘建平老师的博客：机器学习、大数据平台等</strong><br><a href="https://www.cnblogs.com/pinard/p/6483207.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6483207.html</a></li>
+<li><strong>激活函数</strong><br><a href="https://blog.csdn.net/tyhj_sf/article/details/79932893" target="_blank" rel="noopener">https://blog.csdn.net/tyhj_sf/article/details/79932893</a></li>
+<li><strong>Anaconda安装</strong><br><a href="https://www.jianshu.com/p/338d596f4d7b?utm_campaign" target="_blank" rel="noopener">https://www.jianshu.com/p/338d596f4d7b?utm_campaign</a></li>
+<li><strong>MNIST</strong><br><a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">http://yann.lecun.com/exdb/mnist/</a></li>
+<li><strong>PyTorch中文文档</strong><br><a href="https://pytorch-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://pytorch-cn.readthedocs.io/zh/latest/</a></li>
+</ul>
+<h1 id="Part-5-Something-about-Scientific-research"><a href="#Part-5-Something-about-Scientific-research" class="headerlink" title="Part 5 Something about Scientific research"></a>Part 5 Something about Scientific research</h1><h2 id="本科学习的重点"><a href="#本科学习的重点" class="headerlink" title="本科学习的重点"></a>本科学习的重点</h2><ul>
+<li>打好专业基础与数学基础</li>
+<li>参与科研，熟悉科研，寻找感兴趣的<strong>研究方向</strong></li>
+</ul>
+<h2 id="科研和GPA没有直接关联"><a href="#科研和GPA没有直接关联" class="headerlink" title="科研和GPA没有直接关联"></a>科研和GPA没有直接关联</h2><ul>
+<li><strong>基础知识</strong></li>
+<li><strong>编程能力</strong></li>
+<li><strong>思维能力</strong></li>
+<li><strong>强烈的学习动力</strong></li>
+</ul>
+<h2 id="努力导致质变"><a href="#努力导致质变" class="headerlink" title="努力导致质变"></a>努力导致质变</h2><ul>
+<li>科研是一场<strong>天赋</strong>与<strong>努力</strong>并持的慢跑</li>
+</ul>
+<h2 id="如何开始早期的科研训练？"><a href="#如何开始早期的科研训练？" class="headerlink" title="如何开始早期的科研训练？"></a>如何开始早期的科研训练？</h2><ul>
+<li>在线网站学习机器学习等课程。（<strong>我推荐推b站，慕课，Coursera，edX，Udacity，更喜欢纯英文教学，能明显感受到思维模式的不同</strong>）</li>
+<li>读论文+论文解读</li>
+<li>动手写代码（<strong>重复2、3</strong>）</li>
+<li>寻找最新的survey文章读。<ul>
+<li>核心研究问题是什么</li>
+<li>哪些研究学者的论文被大量引用</li>
+<li>follow一个问题</li>
+</ul>
+</li>
+<li>找到该问题最为经典的一篇文章，了解清楚基本的问题定义、评测方法以及已有方法。通过下载真实数据集合，构建评测实验，实现代码，分析bad case等途径查看已有方法具有什么问题。然后试图模仿已有论文论述的研究动机，看看能否将数据中发现的问题转化为学术问题。<blockquote>
+<p>在我看来，科研也许不是每一个人都会选择的道路，想清楚自己想要什么很重要。如果选择了研究生活，确保自己有足够的耐心和热爱去坚持到底。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="最后分享一张图"><a href="#最后分享一张图" class="headerlink" title="最后分享一张图"></a>最后分享一张图</h2><p><img src="/2020/06/07/LeNet-5/1.jpg" alt="Image text"></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="http://yoursite.com">Vanessa Ni</a>
+            <p>原文链接：<a href="http://yoursite.com/2020/06/07/LeNet-5/">http://yoursite.com/2020/06/07/LeNet-5/</a>
+            <p>发表日期：<a href="http://yoursite.com/2020/06/07/LeNet-5/">June 7th 2020, 7:42:28 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2020/06/07/LeNet-5/">June 7th 2020, 7:42:28 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/06/17/How%20to%20build%20your%20blog/" title= "How to build your blog">
+                    <div class="nextTitle">How to build your blog</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:vanessatju@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/jennyvanessa" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer qq" title=qq>
+                  
+                  <img class="profile-qr" src="/757965016" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-1-Introduction-to-CNN"><span class="toc-number">1.</span> <span class="toc-text">Part 1 Introduction to CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN的基本结构"><span class="toc-number">1.1.</span> <span class="toc-text">CNN的基本结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Convolution-Layer-卷积层"><span class="toc-number">1.2.</span> <span class="toc-text">Convolution Layer 卷积层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二维输入"><span class="toc-number">1.2.1.</span> <span class="toc-text">二维输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多维输入"><span class="toc-number">1.2.2.</span> <span class="toc-text">多维输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卷积后，使用ReLU激活函数"><span class="toc-number">1.2.3.</span> <span class="toc-text">卷积后，使用ReLU激活函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pooling-Layer-池化层"><span class="toc-number">1.3.</span> <span class="toc-text">Pooling Layer 池化层</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-2-LeNet-5"><span class="toc-number">2.</span> <span class="toc-text">Part 2 LeNet-5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#INPUT层-输入层"><span class="toc-number">2.1.</span> <span class="toc-text">INPUT层-输入层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C1层-卷积层"><span class="toc-number">2.2.</span> <span class="toc-text">C1层-卷积层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S2层-池化层"><span class="toc-number">2.3.</span> <span class="toc-text">S2层-池化层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C3层-卷积层"><span class="toc-number">2.4.</span> <span class="toc-text">C3层-卷积层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S4层-池化层"><span class="toc-number">2.5.</span> <span class="toc-text">S4层-池化层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C5层-卷积层"><span class="toc-number">2.6.</span> <span class="toc-text">C5层-卷积层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F6层-全连接层"><span class="toc-number">2.7.</span> <span class="toc-text">F6层-全连接层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OutPut层-全连接层"><span class="toc-number">2.8.</span> <span class="toc-text">OutPut层-全连接层</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-3-Environment-Configuration-amp-Code"><span class="toc-number">3.</span> <span class="toc-text">Part 3 Environment Configuration&amp;Code</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境配置"><span class="toc-number">3.1.</span> <span class="toc-text">环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调参"><span class="toc-number">3.2.</span> <span class="toc-text">调参</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-4-Learning-resources"><span class="toc-number">4.</span> <span class="toc-text">Part 4 Learning resources</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Part-5-Something-about-Scientific-research"><span class="toc-number">5.</span> <span class="toc-text">Part 5 Something about Scientific research</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#本科学习的重点"><span class="toc-number">5.1.</span> <span class="toc-text">本科学习的重点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#科研和GPA没有直接关联"><span class="toc-number">5.2.</span> <span class="toc-text">科研和GPA没有直接关联</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#努力导致质变"><span class="toc-number">5.3.</span> <span class="toc-text">努力导致质变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何开始早期的科研训练？"><span class="toc-number">5.4.</span> <span class="toc-text">如何开始早期的科研训练？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后分享一张图"><span class="toc-number">5.5.</span> <span class="toc-text">最后分享一张图</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 3
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2020/06/17/Object-proposals/" >Object proposals</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/17</span><a class="archive-post-title" href= "/2020/06/17/How%20to%20build%20your%20blog/" >How to build your blog</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2020/06/07/LeNet-5/" >LeNet-5</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Vanessa Ni"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
