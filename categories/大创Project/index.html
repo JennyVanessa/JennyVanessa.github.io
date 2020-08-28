@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/Util/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/%E5%A4%A7%E5%88%9BProject/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Vanessa Ni">
@@ -354,25 +354,64 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/06/17/How%20to%20build%20your%20blog/" >
+        <a class="abstract-title" href = "/2020/08/28/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%8F%91%E5%B1%95/" >
             
-                <span>how to build your blog?</span>
+                <span>神经网络的发展</span>
         </a>
         <div class="abstract-content">
-            how to build your blog?you can reference these website
-build blog :https://www.jianshu.com/p/ef3f221a0374
-change theme :https://www.jianshu.com/p/869c6bcd0647
-add pics :https://www.jianshu.com/p/8d28027fec76
-关联域名 https://zhuanlan.zhihu.com/p/22183337
+            卷积神经网络卷积运算需要什么？
+输入层：比如图片处理，将图片（二维或三维）转化为矩阵形式
+卷积核：需要的特征的过滤器 ：假如老鼠尾巴是我们想要提取的特征，那么卷积核应该设为
 
-command
-hexo d -g // push
-hexo s //run at loc...
+如何提取特征（简单版本）
+将卷积核作用于图片，发现对于能够识别的特征计算出来的值非常大
+对于不能识别的特征，计算的值非常小卷积结果为0
+
+
+综上所述，我们提取图片特征的关键是设计合理的卷积核。做完卷积后，我们再经过池化，就可以得到相应的值。
+
+为什么CNN能自动提取图像特征？
+介绍：
+
+在大部分传统机器学习场景里，我们先经过特征工程等方法得到特征表示，然后选用一个机器学习算法进行训练。在训练过程中，表示事物的特征是...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/06/17</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/06/07/LeNet-5/" >
+            
+                <span>LeNet-5</span>
+        </a>
+        <div class="abstract-content">
+            
+大创项目讲座学习笔记
+Apr 25,2020 Handwritten digit recognition based on LeNet-5Record and progress.
+
+Part 1 Introduction to CNNCNN的基本结构
+
+输入层：最左端的图像，在计算机“眼里”是矩阵
+卷积层（Convolution Layer）：CNN特有，使用ReLU激活函数。ReLU(x)=max(0,x)（将小于0的输出值都变为0）
+池化层（Pooling Layer）：没有激活函数
+全连接层（Fully Connected Layer）
+输出层：使用了Softmax激活函数来做图...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/06/07</span>
             </div>
             <!-- tags  -->
             
