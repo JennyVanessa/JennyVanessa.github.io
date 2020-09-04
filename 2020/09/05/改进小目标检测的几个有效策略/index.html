@@ -20,24 +20,27 @@
     <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="这半年学到了很多东西，当然忘得也很快，所以才要一直去努力。  安卓项目 做了一个安卓应用，DaysMatter+历史上的今天，方便自己用，以后感兴趣可以慢慢优化。 感觉这次自己只是浅显的试水了一下as，前端蛮有意思的，但发现自己更喜欢设计页面等等（适合美工和产品经理好吧）。 pre的时候感觉还好，老师问我pixel是什么没回答出来，讲道理现在还没弄明白。   软工一二大作业 写需求设计报告写到吐">
+    <meta name="description" content="改进小目标检测的几个有效策略 在计算机视觉中，检测小目标是最有挑战的问题之一。本文给出了一些有效的策略。无人机上看到的小目标  为了提高你的模型在小目标上的性能，我们推荐以下技术：  提高图像采集的分辨率 增加模型的输入分辨率 tile你的图像 通过增强生成更多数据 自动学习模型anchors 过滤掉无关的类别  为什么小目标检测很困难？小目标问题困扰着世界各地的目标检测模型。不相信吗？查一下最近">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020上半年">
-<meta property="og:url" content="http://yoursite.com/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/index.html">
+<meta property="og:title" content="改进小目标检测的几个有效策略">
+<meta property="og:url" content="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这半年学到了很多东西，当然忘得也很快，所以才要一直去努力。  安卓项目 做了一个安卓应用，DaysMatter+历史上的今天，方便自己用，以后感兴趣可以慢慢优化。 感觉这次自己只是浅显的试水了一下as，前端蛮有意思的，但发现自己更喜欢设计页面等等（适合美工和产品经理好吧）。 pre的时候感觉还好，老师问我pixel是什么没回答出来，讲道理现在还没弄明白。   软工一二大作业 写需求设计报告写到吐">
+<meta property="og:description" content="改进小目标检测的几个有效策略 在计算机视觉中，检测小目标是最有挑战的问题之一。本文给出了一些有效的策略。无人机上看到的小目标  为了提高你的模型在小目标上的性能，我们推荐以下技术：  提高图像采集的分辨率 增加模型的输入分辨率 tile你的图像 通过增强生成更多数据 自动学习模型anchors 过滤掉无关的类别  为什么小目标检测很困难？小目标问题困扰着世界各地的目标检测模型。不相信吗？查一下最近">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/1.PNG">
-<meta property="og:image" content="http://yoursite.com/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/2.PNG">
-<meta property="article:published_time" content="2020-08-28T04:07:36.000Z">
-<meta property="article:modified_time" content="2020-08-28T04:45:29.700Z">
+<meta property="og:image" content="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/1.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/2.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/3.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/5.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/4.PNG">
+<meta property="article:published_time" content="2020-09-04T17:42:36.000Z">
+<meta property="article:modified_time" content="2020-09-04T17:46:06.357Z">
 <meta property="article:author" content="Vanessa Ni">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/1.PNG">
+<meta name="twitter:image" content="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/1.PNG">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
-    <title>2020上半年 · Vanessa&#39;s Studio</title>
+    <title>改进小目标检测的几个有效策略 · Vanessa&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +235,7 @@
                 <a href="/" >Vannesa&#39;s Studio</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">2020上半年</a>
+                <a href="#" class="post-name">改进小目标检测的几个有效策略</a>
             </div>
     </div>
     
@@ -262,7 +265,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            2020上半年
+            改进小目标检测的几个有效策略
             <!-- 404 -->
             
         </h1>
@@ -281,12 +284,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">813</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.4k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/08/28</span>
+                    <span class="post-intro-time">2020/09/05</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -410,59 +413,61 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <blockquote>
-<p>这半年学到了很多东西，当然忘得也很快，所以才要一直去努力。</p>
+        <h1 id="改进小目标检测的几个有效策略"><a href="#改进小目标检测的几个有效策略" class="headerlink" title="改进小目标检测的几个有效策略"></a>改进小目标检测的几个有效策略</h1><blockquote>
+<p>在计算机视觉中，检测小目标是最有挑战的问题之一。本文给出了一些有效的策略。<br><img src="/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/1.PNG" alt="Image text"><br>无人机上看到的小目标</p>
 </blockquote>
-<h1 id="安卓项目"><a href="#安卓项目" class="headerlink" title="安卓项目"></a>安卓项目</h1><blockquote>
-<p>做了一个安卓应用，DaysMatter+历史上的今天，方便自己用，以后感兴趣可以慢慢优化。</p>
-<p>感觉这次自己只是浅显的试水了一下as，前端蛮有意思的，但发现自己更喜欢设计页面等等（适合美工和产品经理好吧）。</p>
-<p>pre的时候感觉还好，老师问我pixel是什么没回答出来，讲道理现在还没弄明白。</p>
-</blockquote>
-<p><img src="/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/1.PNG" alt="Image text"></p>
-<h1 id="软工一二大作业"><a href="#软工一二大作业" class="headerlink" title="软工一二大作业"></a>软工一二大作业</h1><blockquote>
-<p>写需求设计报告写到吐。面向对象、面向过程的分析方法都有所了解了，但还差的多了。</p>
-<p>印象最深的就是老师给放的Grady Booch的讲座。</p>
-<p>“We are changing the civilization line by line”。这是最令我印象深刻的一句话，希望每一个投身计算机领域的人，都能怀揣着热爱与激情，用代码去改变世界。</p>
-<p>希望现实不会把你的热情浇灭。</p>
-</blockquote>
-<h1 id="VR作业"><a href="#VR作业" class="headerlink" title="VR作业"></a>VR作业</h1><blockquote>
-<p>做了个人类一败涂地版跳舞的线<br>得到了dr.own的肯定，守护全世界最好的dr.own。在他这学到了很多东西，老师热情邀请我们去和他做项目，不管大四多忙都要赴约好吧。</p>
-</blockquote>
-<p><img src="/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/2.PNG" alt="Image text"></p>
-<h1 id="springboot"><a href="#springboot" class="headerlink" title="springboot"></a>springboot</h1><blockquote>
-<p>太tm痛苦的一次体验了，痛并快乐着。<br>不想多说了，springboot很有用，很好用，好好看好好学。</p>
-</blockquote>
-<h1 id="挑战杯"><a href="#挑战杯" class="headerlink" title="挑战杯"></a>挑战杯</h1><blockquote>
-<p>初次尝试，败北了，下次再来。</p>
-</blockquote>
-<h1 id="30年创新创新比赛"><a href="#30年创新创新比赛" class="headerlink" title="30年创新创新比赛"></a>30年创新创新比赛</h1><blockquote>
-<p>从构思到实践，一步步跟进。也是第一次做负责人带比赛，对于自己来说是很大的一步。</p>
-<p>结果不好不坏，下次一定更好。</p>
-</blockquote>
-<h1 id="大创"><a href="#大创" class="headerlink" title="大创"></a>大创</h1><blockquote>
-<p>申请路上非常坎坷，从联系导师到立项，感谢遇到征哥这么好的导师，对我整个学业生涯都产生了巨大的影响。</p>
-</blockquote>
-<h1 id="准备写论文"><a href="#准备写论文" class="headerlink" title="准备写论文"></a>准备写论文</h1><blockquote>
-<p>开始尝试。要写论文的时候才发现，想学的东西很多，要学的东西很多。要拒绝的诱惑更多。</p>
-</blockquote>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>这个学期收获最大的有三点：</p>
+<p>为了提高你的模型在小目标上的性能，我们推荐以下技术：</p>
 <ol>
-<li>自己愿意踏出舒适圈去扮演负责人的角色，这是大二进步最大的地方。这里感谢我自己，愿意迈出第一步，给自己争取了很多宝贵的机会。</li>
-<li>对自己大学甚至人生的认知又有了新的想法，从一开学无所事事到努力学习想取得一个好成绩，再到现在想清楚了自己研究生要念的领域，甚至博士想要念的学校。选了这条路就要放弃很多东西，但自己也不会后悔，所做的一切都只因为三个字，我喜欢。这里感谢征哥和翁教授，带我走进计算机视觉的世界。</li>
-<li>团队的力量。和秋华还有霏霏一起做项目的时候，感受到了强烈的团队氛围，每一个人都有各自的特长，每一个都愿意学习和分享。这里感谢你们两个人，也祝我们论文写的顺利。</li>
+<li>提高图像采集的分辨率</li>
+<li>增加模型的输入分辨率</li>
+<li>tile你的图像</li>
+<li>通过增强生成更多数据</li>
+<li>自动学习模型anchors</li>
+<li>过滤掉无关的类别</li>
 </ol>
+<h2 id="为什么小目标检测很困难？"><a href="#为什么小目标检测很困难？" class="headerlink" title="为什么小目标检测很困难？"></a>为什么小目标检测很困难？</h2><p>小目标问题困扰着世界各地的目标检测模型。不相信吗？查一下最近的模型在COCO上的评估结果，YOLOv3，EfficientDet和YOLOv4：<br><img src="/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/2.PNG" alt="Image text"><br>查看AP_S、AP_M、AP_L以了解最新的模型。小物体检测是很难的！<br>以Efficient为例，小目标的AP只有12%，大目标的AP为51%。这几乎是五倍的差异！那么，为什么检测小物体如此困难呢？</p>
 <blockquote>
-<p>放弃了很多，收获了更多，这就是我的2020吧。</p>
+<p>AP是什么？<a href="https://www.cnblogs.com/shixiangwan/p/7215926.html?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">https://www.cnblogs.com/shixiangwan/p/7215926.html?utm_source=itdadao&amp;utm_medium=referral</a></p>
+<p>简单来讲，模型找目标找的的准不准</p>
 </blockquote>
+<p>这一切都归结于模型。目标检测模型通过在卷积层中对像素进行聚合来形成特征。<br><img src="/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/3.PNG" alt="Image text"><br>(物体检测中的特征聚合)<br>在网络的末端，基于损失函数进行预测，损失函数根据预测值和<strong>ground truth</strong>之间的差异对所有像素进行加和。</p>
+<blockquote>
+<p><img src="/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/5.PNG" alt="Image text"></p>
+</blockquote>
+<p><img src="/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/4.PNG" alt="Image text"></p>
+<p>(YOLO中的损失函数)</p>
+<p>如果ground truth框不大，则在进行训练时<strong>信号会很小</strong>。此外，小物体最有可能有<strong>数据标记错误</strong>，他们的识别可能被忽略。</p>
+<p>从经验和理论上讲，小物体是很难的。</p>
+<h1 id="Method1-提升图像采集的分辨率"><a href="#Method1-提升图像采集的分辨率" class="headerlink" title="Method1 提升图像采集的分辨率"></a>Method1 提升图像采集的分辨率</h1><p>分辨率，分辨率，分辨率……都是分辨率的锅。</p>
+<p>非常小的物体的<strong>边界框中可能只包含几个像素</strong>，这意味着增加图像的分辨率可以增加探测器可以从那个小盒子中<strong>形成的丰富特征</strong>，这是非常重要的。<br>因此，我们建议尽可能<strong><em>提高采集图像的分辨率</em></strong>。</p>
+<h1 id="Method2-提高模型的输入分辨率"><a href="#Method2-提高模型的输入分辨率" class="headerlink" title="Method2 提高模型的输入分辨率"></a>Method2 提高模型的输入分辨率</h1><p>一旦你有了更高分辨率的图像，你就可以<strong>放大模型的输入分辨率</strong>。警告：这将导致大型模型需要更长的时间来训练，并且当你开始部署时，也会更慢地进行推断。你可能需要实验来找出速度与性能之间的正确权衡。</p>
+<p>在训练YOLOv4中，你可以通过改变配置文件中的图像大小来轻松缩放输入分辨率。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[net] </span><br><span class="line">batch=<span class="number">64</span> </span><br><span class="line">subdivisions=<span class="number">36</span> </span><br><span class="line">width=&#123;YOUR RESOLUTION WIDTH HERE&#125; </span><br><span class="line">height=&#123;YOUR RESOLUTION HEIGHT HERE&#125; </span><br><span class="line">channels=<span class="number">3</span> </span><br><span class="line">momentum=<span class="number">0.949</span> </span><br><span class="line">decay=<span class="number">0.0005</span> </span><br><span class="line">angle=<span class="number">0</span> </span><br><span class="line">saturation = <span class="number">1.5</span> </span><br><span class="line">exposure = <span class="number">1.5</span> </span><br><span class="line">hue = <span class="number">.1</span>  </span><br><span class="line">learning_rate=<span class="number">0.001</span> </span><br><span class="line">burn_in=<span class="number">1000</span> </span><br><span class="line">max_batches=<span class="number">6000</span> </span><br><span class="line">policy=steps </span><br><span class="line">steps=<span class="number">4800.0</span>,<span class="number">5400.0</span> </span><br><span class="line">scales=<span class="number">.1</span>,<span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<p>你也可以在训练YOLOv5中通过改变训练命令中的图像尺寸参数来轻松缩放你的输入分辨率:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!python train.py --img &#123;YOUR RESOLUTON SIZE HERE&#125; --batch 16 --epochs 10 --data &#39;..&#x2F;data.yaml&#39; --cfg .&#x2F;models&#x2F;custom_yolov5s.yaml --weights &#39;&#39; --name yolov5s_results  --cache</span><br></pre></td></tr></table></figure>
+
+<h1 id="Method3-对图像进行Tiling"><a href="#Method3-对图像进行Tiling" class="headerlink" title="Method3 对图像进行Tiling"></a>Method3 对图像进行Tiling</h1><p>检测小物体的另一个重要策略是将图像切割后形成batch，这个操作叫做tile，作为预处理步骤。tile可以有效地将检测器聚焦在小物体上，但允许你保持所需的小输入分辨率，以便能够运行快速推断。</p>
+<p>如果你在训练中使用tile，重要的是要记住，你也需要在推理时tile你的图像。</p>
+<h1 id="Method4-通过增强产生更多数据"><a href="#Method4-通过增强产生更多数据" class="headerlink" title="Method4 通过增强产生更多数据"></a>Method4 通过增强产生更多数据</h1><p>数据增强从基本数据集生成新的图像。这对于防止模型过拟合训练集非常有用。</p>
+<p>一些特别有用的小物体检测增强包括随机裁剪、随机旋转和马赛克增强。</p>
+<h1 id="Method5-自动学习模型Anchors"><a href="#Method5-自动学习模型Anchors" class="headerlink" title="Method5 自动学习模型Anchors"></a>Method5 自动学习模型Anchors</h1><p>Anchors是你的模型学会预测的与之相关的原型边界框。也就是说，anchors可以预先设置，有时对你的训练数据不是最优的。最好根据你手头的任务自定义调优它们。</p>
+<p>幸运的是，YOLOv5模型会根据你的自定义数据自动为你完成这项工作。你所要做的就是开始训练。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Analyzing anchors... anchors&#x2F;target &#x3D; 4.66, Best Possible Recall (BPR) &#x3D; 0.9675. Attempting to generate improved anchors, please wait... WARNING: Extremely small objects found. 35 of 1664 labels are &lt; 3 pixels in width or height. Running kmeans for 9 anchors on 1664 points... thr&#x3D;0.25: 0.9477 best possible recall, 4.95 anchors past thr n&#x3D;9, img_size&#x3D;416, metric_all&#x3D;0.317&#x2F;0.665-mean&#x2F;best, past_thr&#x3D;0.465-mean: 18,24,  65,37,  35,68,  46,135,  152,54,  99,109,  66,218,  220,128,  169,228 Evolving anchors with Genetic Algorithm: fitness &#x3D; 0.6825: 100%|██████████| 1000&#x2F;1000 [00:00&lt;00:00, 1081.71it&#x2F;s] thr&#x3D;0.25: 0.9627 best possible recall, 5.32 anchors past thr n&#x3D;9, img_size&#x3D;416, metric_all&#x3D;0.338&#x2F;0.688-mean&#x2F;best, past_thr&#x3D;0.476-mean: 13,20,  41,32,  26,55,  46,72,  122,57,  86,102,  58,152,  161,120,  165,204</span><br></pre></td></tr></table></figure>
+
+<h1 id="Method6-过滤掉无关的类别"><a href="#Method6-过滤掉无关的类别" class="headerlink" title="Method6 过滤掉无关的类别"></a>Method6 过滤掉无关的类别</h1><p>类别管理是提高数据集质量的一项重要技术。如果你有一个类与另一个类明显重叠，你应该从数据集中过滤掉这个类。也许，你认为数据集中的小物体不值得检测，所以你可能希望将其拿掉。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li>英文原文： <a href="https://towardsdatascience.com/tackling-the-small-object-problem-in-object-detection-6e1c9976ee69" target="_blank" rel="noopener">https://towardsdatascience.com/tackling-the-small-object-problem-in-object-detection-6e1c9976ee69</a></li>
+<li>翻译：<a href="https://mp.weixin.qq.com/s/XJz8SwQiGlck8oF6GeiQUw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/XJz8SwQiGlck8oF6GeiQUw</a></li>
+</ul>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>Author：<a href="http://yoursite.com">Vanessa Ni</a>
-            <p>原文链接：<a href="http://yoursite.com/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/">http://yoursite.com/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/</a>
-            <p>发表日期：<a href="http://yoursite.com/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/">August 28th 2020, 12:07:36 pm</a>
-            <p>更新日期：<a href="http://yoursite.com/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/">August 28th 2020, 12:45:29 pm</a>
+            <p>原文链接：<a href="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/">http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/</a>
+            <p>发表日期：<a href="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/">September 5th 2020, 1:42:36 am</a>
+            <p>更新日期：<a href="http://yoursite.com/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/">September 5th 2020, 1:46:06 am</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -471,16 +476,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/09/05/%E6%94%B9%E8%BF%9B%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%89%E6%95%88%E7%AD%96%E7%95%A5/" title= "改进小目标检测的几个有效策略">
-                    <div class="nextTitle">改进小目标检测的几个有效策略</div>
+                <a href= "/2020/09/05/MacOS%E4%B8%8B%E7%9A%84Pytorch%E9%85%8D%E7%BD%AE/" title= "MacOS下的Pytorch配置">
+                    <div class="nextTitle">MacOS下的Pytorch配置</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/08/28/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%8F%91%E5%B1%95/" title= "神经网络的发展">
-                    <div class="prevTitle">神经网络的发展</div>
+                <a href= "/2020/08/28/2020%E4%B8%8A%E5%8D%8A%E5%B9%B4/" title= "2020上半年">
+                    <div class="prevTitle">2020上半年</div>
                 </a>
             
         </li>
@@ -610,7 +615,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安卓项目"><span class="toc-number">1.</span> <span class="toc-text">安卓项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#软工一二大作业"><span class="toc-number">2.</span> <span class="toc-text">软工一二大作业</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VR作业"><span class="toc-number">3.</span> <span class="toc-text">VR作业</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#springboot"><span class="toc-number">4.</span> <span class="toc-text">springboot</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#挑战杯"><span class="toc-number">5.</span> <span class="toc-text">挑战杯</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#30年创新创新比赛"><span class="toc-number">6.</span> <span class="toc-text">30年创新创新比赛</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#大创"><span class="toc-number">7.</span> <span class="toc-text">大创</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#准备写论文"><span class="toc-number">8.</span> <span class="toc-text">准备写论文</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">9.</span> <span class="toc-text">最后</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#改进小目标检测的几个有效策略"><span class="toc-number">1.</span> <span class="toc-text">改进小目标检测的几个有效策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么小目标检测很困难？"><span class="toc-number">1.1.</span> <span class="toc-text">为什么小目标检测很困难？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method1-提升图像采集的分辨率"><span class="toc-number">2.</span> <span class="toc-text">Method1 提升图像采集的分辨率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method2-提高模型的输入分辨率"><span class="toc-number">3.</span> <span class="toc-text">Method2 提高模型的输入分辨率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method3-对图像进行Tiling"><span class="toc-number">4.</span> <span class="toc-text">Method3 对图像进行Tiling</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method4-通过增强产生更多数据"><span class="toc-number">5.</span> <span class="toc-text">Method4 通过增强产生更多数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method5-自动学习模型Anchors"><span class="toc-number">6.</span> <span class="toc-text">Method5 自动学习模型Anchors</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Method6-过滤掉无关的类别"><span class="toc-number">7.</span> <span class="toc-text">Method6 过滤掉无关的类别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">8.</span> <span class="toc-text">Reference</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
