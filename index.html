@@ -29,7 +29,191 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><script type="text/javascript" color="255,255,255" opacity="0.7" zIndex="-1" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Just be here now🎇</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-03-07T13:03:34.000Z" title="2023/3/7 21:03:34">2023-03-07</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-07T13:16:29.661Z" title="2023/3/7 21:16:29">2023-03-07</time></span><span class="level-item">a minute read (About 203 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/07/2303072103/">Frontend | Icarus主题美化</a></p><div class="content"><ol>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><script type="text/javascript" color="255,255,255" opacity="0.7" zIndex="-1" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Just be here now🎇</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-03-15T08:51:48.000Z" title="2023/3/15 16:51:48">2023-03-15</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-15T09:04:38.458Z" title="2023/3/15 17:04:38">2023-03-15</time></span><span class="level-item">7 minutes read (About 1052 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/15/2303151651/">Trend | GPT-4 —— The winner takes all</a></p><div class="content"><h1 id="Image-and-Text-Multimodal"><a href="#Image-and-Text-Multimodal" class="headerlink" title="Image and Text Multimodal"></a>Image and Text Multimodal</h1><blockquote>
+<p>We report the development of GPT-4, a <strong>large-scale</strong>, <strong>multimodal model</strong> which can <strong>accept image and text inputs and produce text outputs</strong>.</p>
+</blockquote>
+<ul>
+<li>模型底层逻辑还是image+text input（融入多模态元素，更唬人一些？），但还是文本outputs（不过听说chatgpt plus版本已经可以有image output了，怀疑是一些命令的组合？就类似于上一篇微软刚提出的Vision Chatgpt的方式一样，将视觉模型作为tool模型，large-scale语言预训练作为agent模型）。</li>
+<li><strong>支持输入更多的tokens</strong>（更个性化，更方便定制了，更task-specific了）</li>
+<li>加了一些VQA的性能对比。</li>
+</ul>
+<h1 id="Professional-and-Academic-Benchmarks"><a href="#Professional-and-Academic-Benchmarks" class="headerlink" title="Professional and Academic Benchmarks"></a>Professional and Academic Benchmarks</h1><blockquote>
+<p>While less capable than humans in many real-world scenarios, GPT-4 exhibits <strong>human-level performance on various professional and academic benchmark</strong>s, including passing a simulated bar exam with a score around the top 10% of test takers. </p>
+</blockquote>
+<ul>
+<li>professional benchmarks</li>
+</ul>
+<blockquote>
+<p>乱杀应试教育界，秒杀多少普通人。</p>
+<p>AI for science提上日程吧，早日研究，然后自我替代（开玩笑，不过很期待这一天）。</p>
+</blockquote>
+<p><img src="/2023/03/15/2303151651/1.png"></p>
+<blockquote>
+<p>这GRE、leetcode水平，感觉我自己都要花点时间才能达到呢。</p>
+</blockquote>
+<ul>
+<li><p>academic benchmark</p>
+<p>已经叫做<strong>benchmark-specific tuning</strong>了，面向任务的DL调参侠瑟瑟发抖。</p>
+<p><img src="/2023/03/15/2303151651/2.png"></p>
+</li>
+</ul>
+<h1 id="Thinking"><a href="#Thinking" class="headerlink" title="Thinking"></a>Thinking</h1><p><img src="/2023/03/15/2303151651/3.png"></p>
+<ul>
+<li><p>这个part让我觉得，训练一个大模型需要好多方面的协调，包括</p>
+<ul>
+<li><strong>Pretraining</strong><ul>
+<li>Compute cluster scaling</li>
+<li><strong>Data</strong></li>
+<li>Distributed training infrastructure</li>
+<li>Hardware correctness</li>
+<li>Optimization &amp; architecture</li>
+<li><strong>Training run babysitting</strong></li>
+</ul>
+</li>
+<li><strong>Long context</strong><ul>
+<li>Long context research</li>
+<li>Long context kernels</li>
+</ul>
+</li>
+<li><strong>Vision</strong><ul>
+<li>Architecture research</li>
+<li>Compute cluster scaling</li>
+<li>Distributed training infrastructure</li>
+<li>Hardware correctness</li>
+<li>Data</li>
+<li>Alignment data</li>
+<li>Training run babysitting</li>
+<li>Deployment &amp; post-training</li>
+</ul>
+</li>
+<li><strong>Reinforcement Learning &amp; Alignment</strong><ul>
+<li><strong>Dataset contributions</strong></li>
+<li><strong>Data infrastructure</strong></li>
+<li>ChatML format</li>
+<li><strong>Model safety</strong></li>
+<li>Refusals</li>
+<li>Foundational RLHF and InstructGPT work</li>
+<li>Flagship training runs</li>
+<li>Code capability</li>
+</ul>
+</li>
+<li><strong>Evaluation &amp; analysis</strong><ul>
+<li>OpenAI Evals library</li>
+<li>Model-graded evaluation infrastructure</li>
+<li>Acceleration forecasting</li>
+<li>ChatGPT evaluations</li>
+<li>Capability evaluations</li>
+<li>Coding evaluations</li>
+<li>Real-world use case evaluations</li>
+<li>Contamination investigations</li>
+<li>Instruction following and API evals</li>
+<li>Novel capability discovery</li>
+<li>Vision evaluations</li>
+<li>Economic impact evaluation</li>
+<li>Non-proliferation, international humanitarian law &amp; national security red teaming</li>
+<li>Overreliance analysis</li>
+<li>Privacy and PII evaluations</li>
+<li>Safety and policy evaluations</li>
+<li><strong>OpenAI adversarial testers</strong></li>
+<li>System card &amp; broader impacts analysis</li>
+</ul>
+</li>
+<li><strong>Deployment</strong><ul>
+<li>Inference research</li>
+<li>GPT-4 API &amp; ChatML deployment</li>
+<li>GPT-4 web experience</li>
+<li>Inference infrastructure</li>
+<li>Reliability engineering</li>
+<li>Trust &amp; safety engineering</li>
+<li>Trust &amp; safety monitoring and response</li>
+<li>Trust &amp; safety policy</li>
+<li>Deployment compute</li>
+<li>Product management</li>
+</ul>
+</li>
+<li><strong>Additional contributions</strong><ul>
+<li><strong>Blog post &amp; paper content</strong></li>
+<li>Communications</li>
+<li>Compute allocation support</li>
+<li>Contracting, revenue, pricing, &amp; finance support</li>
+<li>Launch partners &amp; product operations</li>
+<li>Legal</li>
+<li>Security &amp; privacy engineering</li>
+<li>System administration &amp; on-call support</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>比较费人的小部门就是data和training部分（标粗显示的部分），然后就是领域专家给反馈（adversarial testers）。</p>
+</li>
+<li><p>算法部分Pretraining+long context+Vision+RL，测试部署Evaluation+deployment，以及后期各种市场、产品，都缺一不可，都很关键啊。不过能看到AI产品能够有今天，也是十分欣慰了，以前的AI都停留在弱弱弱弱AI的层面吧，好处是觉得自己学的东西真的能改变世界，学科真的有技术爆炸式的飞跃进展，坏处是自己好像没什么用处了（美滋滋，不过发展的尽头，不都是要被替代的吗？语言、教育、设计、律师、计算机、金融各行各业，不论是专业性的，还是需要想象力的艺术生成，好像AI在某种程度上已经击败了90%的人类了吧）。</p>
+</li>
+<li><p>3年前的自己还很有信念的All in AI，坚信Deep Learning，距离通用AI的出现或许真的不远咯。</p>
+</li>
+<li><p>目前的AI变强了，但还是<strong>辅助人类办公，提升效率的帮手</strong>，距离完全代替人类还有很长的路要走（甚至真正的商业化都比较麻烦？）。愈发认为，人类的情感、情绪价值，在当下变得更为宝贵、更难以替代一些。</p>
+</li>
+<li><p><strong>未来究竟是理性的胜利、还是感性的胜利，是机器的胜利、还是人类的胜利呢。</strong>如果有生之年能够见证的话，还挺让人期待的。</p>
+</li>
+<li><p><strong>不过当下，打不过就加入嘛！</strong></p>
+</li>
+</ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><p><a target="_blank" rel="noopener" href="https://openai.com/product/gpt-4">GPT-4 (openai.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/kA7FBZsT6SIvwIkRwFS-xw">GPT-4震撼发布：多模态大模型，直接升级ChatGPT、必应，开放API，游戏终结了？ (qq.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cdn.openai.com/papers/gpt-4.pdf">gpt-4.pdf (openai.com)</a></p>
+</li>
+</ol>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-03-14T12:03:26.000Z" title="2023/3/14 20:03:26">2023-03-14</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-15T08:03:51.233Z" title="2023/3/15 16:03:51">2023-03-15</time></span><span class="level-item">5 minutes read (About 690 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/14/2303142003/">Paper | Visual ChatGPT Talking, Drawing and Editing with Visual Foundation Models | arXiv2023</a></p><div class="content"><h1 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h1><ul>
+<li>Title： <code>Visual ChatGPT: Talking, Drawing and Editing with Visual Foundation Models</code></li>
+<li>Keyword：Large Language Model（LLM），Visual Foundation Model（VFM）</li>
+<li>Idea：<strong>Prompt Engineering</strong></li>
+<li>Source<ul>
+<li>Paper，2023年3月8日ArXiv Submitted，微软亚洲研究院的一项新工作。<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.04671">2303.04671] Visual ChatGPT: Talking, Drawing and Editing with Visual Foundation Models (arxiv.org)</a></li>
+<li>Code，刚发布几天，目前已经有1万多标星了。<a target="_blank" rel="noopener" href="https://github.com/microsoft/visual-chatgpt">microsoft&#x2F;visual-chatgpt: VisualChatGPT (github.com)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>存在的问题：</p>
+<ul>
+<li><p><strong>大型语言模型</strong>如ChatGPT利用<strong>单一语言模态</strong>训练，因此处理视觉信息的能力非常有限。</p>
+</li>
+<li><p>相比较而言，<strong>视觉基础模型</strong>（VFM，Visual Foundation Models）在计算机视觉方面潜力巨大，因而能够理解和生成复杂的图像（如ViT、BLIP、Stable Diffusion等等）。VFM模型对输入-输出格式的苛求和固定限制，使得其在<strong>人机交互方面不如会话语言模型灵活</strong>。</p>
+</li>
+</ul>
+<p>贡献：</p>
+<ul>
+<li>Prompt Engineering：将ChatGPT和多个SOTA视觉基础模型连接。</li>
+</ul>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p>没有任何的训练，系统构成：</p>
+<ul>
+<li><p>Part 1 ChatGPT（直接利用大语言集成工具<strong>LangChain</strong>，调用OpenAI text-davinci-003 version）</p>
+<p><img src="/2023/03/14/2303142003/1.png"></p>
+</li>
+<li><p>Part 2 PromptManager</p>
+<p>构造了一个巨大的Prompt，把系统规则、视觉基础模型调用、历史对话、用户query、历史推理、中间结果都包含，简单来说就是<strong>指导ChatGPT怎么调用模型，什么时候调用，怎么处理结果</strong>。ChatGPT和VFMs之间沟通提到图片的时候使用的是随机生成的<strong>uuid（universally unique identifier）</strong>，两者之间是没有向量或者图片数据交互的。</p>
+<p><img src="/2023/03/14/2303142003/2.png"></p>
+<p><img src="/2023/03/14/2303142003/3.png"></p>
+<p><img src="/2023/03/14/2303142003/4.png"></p>
+</li>
+<li><p>Part 3 VFMs（22个训练好的SOTA视觉基础模型，直接调用，利用4张V100就能全部部署）</p>
+<p><img src="/2023/03/14/2303142003/5.png"></p>
+</li>
+</ul>
+<h1 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h1><ul>
+<li>不是真正的多模态大模型，不过是普通玩家（小公司）可以尝试的Prompt Engineering。</li>
+<li>训练一个多任务的large-scale视觉-语言模型应该非常消耗算力吧，23年3月15日发布的gpt4虽然没有公开详细的技术细节，但我觉得底层加了Vision QA，也就是Image-to-Text的能力，还是很难将I2I，T2I，I2T完全结合再一起的。</li>
+<li>不过大力出奇迹，stack more layers，feed more data。</li>
+<li>猜测GPT4背后的一些图像能力是靠这样的简单逻辑实现的。</li>
+</ul>
+<p><img src="/2023/03/14/2303142003/6.png"></p>
+<p><img src="/2023/03/14/2303142003/7.png"></p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://www.aminer.cn/research_report/640c27d07cb68b460fa0a702">视觉ChatGPT来了，微软发布，代码已开源 - 热点 - 科研解读 - AMiner</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/613133999">visual-chatgpt: 训什么练，我直接prompt一把梭 - 知乎 (zhihu.com)</a></li>
+</ol>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-03-07T13:03:34.000Z" title="2023/3/7 21:03:34">2023-03-07</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-14T12:03:57.788Z" title="2023/3/14 20:03:57">2023-03-14</time></span><span class="level-item">a minute read (About 203 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/07/2303072103/">Frontend | Icarus主题美化</a></p><div class="content"><ol>
 <li><p>为博客添加nest动态线条特效</p>
 <p>在<code>themes\icarus\layout\layout.jsx</code>的<code>body</code>中添加如下代码，CDN可根据自己使用的修改。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> color=<span class="string">&quot;30,144,255&quot;</span> opacity=<span class="string">&#x27;0.5&#x27;</span> zIndex=<span class="string">&quot;-1&quot;</span> count=<span class="string">&quot;150&quot;</span> src=<span class="string">&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
@@ -427,128 +611,7 @@
 <li>距离取代程序员还有很远的距离呢~</li>
 </ul>
 </blockquote>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-02-07T14:05:40.000Z" title="2023/2/7 22:05:40">2023-02-07</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-02-15T12:22:38.072Z" title="2023/2/15 20:22:38">2023-02-15</time></span><span class="level-item"><a class="link-muted" href="/categories/Util/">Util</a></span><span class="level-item">6 minutes read (About 833 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/07/2302072205/">Util | ChatGPT使用体验以及重拾Hexo遇到的坑</a></p><div class="content"><h1 id="ChatGPT注册"><a href="#ChatGPT注册" class="headerlink" title="ChatGPT注册"></a>ChatGPT注册</h1><ul>
-<li>用Microsoft Edge、Google Chrome浏览器。</li>
-<li><strong>美区的VPN，开全局模式</strong>。</li>
-<li><a target="_blank" rel="noopener" href="https://openai.com/blog/chatgpt/">ChatGPT: Optimizing Language Models for Dialogue (openai.com)</a>👉TRY CHATGPT Button。</li>
-<li>如遇到<code>ChatGPT is at capacity right now</code>问题，多刷新几次页面就能进去。</li>
-<li>利用Google账号直接登录。</li>
-<li>利用<a target="_blank" rel="noopener" href="https://sms-activate.org/">SMS-Activate</a>，下载桌面版软件（网页版做的太烂了），充值0.2刀（支持支付宝），买一个印度区的openai短信服务（最便宜），就可以完成注册了。</li>
-<li>如遇到<code>We&#39;re experiencing exceptionally high demand. Please hang tight as we work on scaling our systems.</code>，<code>Too many requests in 1 hour. Try again later.</code>问题<ul>
-<li>换梯子、换浏览器，清除cookie和其他站点数据（短时间能解决问题）</li>
-<li>花钱买api接口调用（不过马上就要上线付费版的chatgpt pro了？）</li>
-<li><strong>尽量白天使用</strong>，晚上别用（用的人太多了，尤其是美国娃，别抢了）</li>
-<li>实在不行淘宝等平台买新号用吧。</li>
-</ul>
-</li>
-</ul>
-<h1 id="ChatGPT使用体验"><a href="#ChatGPT使用体验" class="headerlink" title="ChatGPT使用体验"></a>ChatGPT使用体验</h1><ul>
-<li><p>最初试用ChatGPT时，仅仅让它续写故事，做内容生成。发现是在一本正经的胡说八道，于是就没有再继续使用了。</p>
-</li>
-<li><p>后来才发现是使用的方法不对。具体可以参考<a target="_blank" rel="noopener" href="https://github.com/f/awesome-chatgpt-prompts">f&#x2F;awesome-chatgpt-prompts: This repo includes ChatGPT prompt curation to use ChatGPT better. (github.com)</a>，里面涉及了ChatGPT可以完成的许多内容。</p>
-</li>
-<li><p>最近看微软将ChatGPT集成到Bing搜索，以及谷歌等巨头公司做出的一系列举动，发现ChatGPT开启了新的交互式搜索范式，这是让剩下的搜索引擎巨头倍感焦虑的问题。</p>
-</li>
-<li><p>关于ChatGPT的编码能力，我觉得很适合辅助入门者进行代码的学习，但是复杂一点的问题它就没办法解决了。</p>
-</li>
-</ul>
-<p><img src="/2023/02/07/2302072205/1.png"></p>
-<p><img src="/2023/02/07/2302072205/2.png"></p>
-<p><img src="/2023/02/07/2302072205/3.png"></p>
-<p><img src="/2023/02/07/2302072205/4.png"></p>
-<p><img src="/2023/02/07/2302072205/5.png"></p>
-<p><img src="/2023/02/07/2302072205/6.png"></p>
-<p><img src="/2023/02/07/2302072205/7.png"></p>
-<ul>
-<li><strong>不管是用YouTube、Google、StackOverflow、GitHub，还是ChatGPT辅助编码，问问题的能力永远比答案更重要，所以搜索引擎是一种工具。</strong>这些工具的诞生能够将简单的、重复性的工作解决掉，所以不愿意终身学习的躺平er们要小心了，在不久的将来，可能就要被代替掉了。</li>
-</ul>
-<h1 id="Hexo插入图片遇到的坑"><a href="#Hexo插入图片遇到的坑" class="headerlink" title="Hexo插入图片遇到的坑"></a>Hexo插入图片遇到的坑</h1><p>参考</p>
-<ul>
-<li><p><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000019625231">hexo3 - hexo图片路径问题 - SegmentFault 思否</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/xcodebuild/hexo-asset-image/issues/47">域名是xxx.io的情况下，图片路径会从原本&#x2F;xxx.jpg变成 &#x2F;.io&#x2F;xxx.jpg · Issue #47 · xcodebuild&#x2F;hexo-asset-image (github.com)</a></p>
-</li>
-</ul>
-<p>直接卸载hexo-asset-image插件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<p>将_config.yml中</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>md文件中引用格式为</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](<span class="link">同名文章assetfoldername/imagename.png</span>)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>基于Icarus的一些个人博客：</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://blog.wxk.me/about/">about - improveNPC的日志 (wxk.me)</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.legendsmb.com/">legendsmb</a></li>
-<li><a target="_blank" rel="noopener" href="https://littlezero.top/20190811HexoIc/">Hexo Icarus主题配置完全手册 | 小贪心 (littlezero.top)</a></li>
-<li><a target="_blank" rel="noopener" href="https://lqwang.net/">旺阳 (lqwang.net)</a></li>
-</ol>
-<p>学习文档</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a></li>
-<li><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/"><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/categories/">Categories - Icarus (ppoffice.github.io)</a></a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-icarus">ppoffice&#x2F;hexo-theme-icarus: A simple, delicate, and modern theme for the static site generator Hexo. (github.com)</a></li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-02-07T13:44:23.000Z" title="2023/2/7 21:44:23">2023-02-07</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-07T12:27:03.029Z" title="2023/3/7 20:27:03">2023-03-07</time></span><span class="level-item"><a class="link-muted" href="/categories/Growth/">Growth</a></span><span class="level-item">17 minutes read (About 2522 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/07/2302072144/">Growth | Brand New Start</a></p><div class="content"><blockquote>
-<p><strong>写一些废话在前面</strong>：</p>
-<p>好久没有写博客了，也很久没有更新个人博客。之前这个站点的内容已经找不到了（大多数是关于深度学习和目标检测的，还有本科做的一些Toy-Project），索性从头配置，把之前的内容全部删除掉了，也算是一个新的开始。</p>
-<p>这个博客主题是<strong>ICARUS赛博朋克版本</strong>，决定以后一直用下去了。我笔记本的桌面也是一张赛博朋克风的图，用了很久。最初选择计算机专业，是因为高中时在Coursera自学过前端的课程，当时觉得好有趣，而且我从小就喜欢打游戏;)。后来接触AI，心中便种下了一颗赛博朋克梦，又回到了Coursera，从吴恩达老师的经典《Deep Learning》学起，时常觉得和CS这个学科在冥冥之中有着不解之缘。</p>
-<p>虽然大学四年在学业上取得了不错的成绩（刚入学的我数学垫底，及格都会眉飞色舞的开心好一阵，到最后专业第三，还保研到了复旦），可CS毕竟是一门实践学科，四年光阴拿去卷成绩、参加社团活动、各地旅行、认识有趣的人，也算是过的快乐且丰富多彩，但技术上的长进确实不多，背负科班的名号还是有些惭愧的，而成为技术大牛需要夜以继日的持续努力和实践。</p>
-<p>22岁，读了研究生，开始认真思考未来的职业规划。</p>
-<ul>
-<li>是做一些<em>开源项目</em>，<em>背八股刷leetcode</em>，去面试前端后端？（虽然业务场景广泛，绩效清晰，但前端容易被替代，后端技术繁琐，还是要看业务线，以及需求来做事，最终成为螺丝钉，在国内还有裁员风险。）</li>
-<li>是赶快<em>水两篇文章</em>，背八股文刷leetcode，去面试算法工程师？（虽然和研究方向沾边，但已经卷成麻花，且没有什么好的业务能落地，移动互联网红利期结束，AI不再像过去一样能圈很多钱，面向落地和前后端没区别，面向算法的炼丹师能让人焦虑的要死，一个月没什么指标提升就可以考虑如何体面的离职了）</li>
-<li>是<em>疯狂水文章，读博士</em>，然后再去工业界&#x2F;学术界呢？</li>
-<li>是在国内卷，还是<em>润</em>出去呢？</li>
-<li>是直接躺平去央企国企银行，考公务员呢？还是继续在大厂卷技术产品经理？</li>
-<li>……</li>
-</ul>
-<p>你看，成长最讨厌的，就是把我们变成现实、唯结果论、喜欢分析利弊的大人。在这个极度内卷的时代，这是生存下去的必要品质，但上述所提到的也不过是一些同质化竞争。我们焦虑，我们张口闭口提八股文leetcode、CCF-A论文×N、50w的package、大厂实习和转正，好像这些是衡量人生成功与否唯一的标志，早就把<strong>热爱</strong>二字抛到九霄云外了，这里的热爱可不是“为的就是这块技术“，现实主义和理想主义从来都不是二选一问题。人变老的标志不是年龄的增长，而是现实消磨掉了你原本拥有的理想主义。</p>
-<p>最后再引两段我很喜欢的话，作为过去的结束语，以及未来的开场白：</p>
-<p>“那一天我二十一岁，在我一生的黄金时代。我有好多奢望。我想爱，想吃，还想在一瞬间变成天上半明半暗的云。后来我才知道，生活就是个缓慢受锤的过程，人一天天老下去，奢望也一天天消失，最后变得像挨了锤的牛一样。可是我过二十一岁生日时没有预见到这一点。<strong>我觉得自己会永远生猛下去，什么也锤不了我。</strong>“</p>
-<p>“回头看他人生的故事的时候，我们或许觉得传奇精彩，可是带入来看却会发现他在面临每一个人生岔路口时，做出的每一个决定需要付出多大的勇气。<strong>都说人生任何时候开始都不晚，或许前提是那个人背负着巨大的足以支撑其走到最后的信念和梦想。毕竟人生区区百年，只争朝夕。</strong>“</p>
-<p>2023.02.07 于广州。</p>
-<hr>
-<p>更新想法。</p>
-<p>任何技术（前端&#x2F;后端&#x2F;算法&#x2F;数据库&#x2F;网安&#x2F;操作系统）都可以深挖，都需要持续不断的学习，才不会被日新月异的技术洪流淘汰掉。找到自己感兴趣的就好。</p>
-<p>以及，</p>
-<p>Try first. 任何新鲜事物都先试试看。</p>
-<p><strong>大凡事物必有顺序。</strong></p>
-<ul>
-<li><strong>看得太超前了不行，看得太超前，势必忽视脚下，人往往跌倒。</strong></li>
-<li><strong>可另一方面，光看脚下也不行，不知道前面你会撞上什么。</strong></li>
-<li><strong>所以，要在适度往前看的同时，按部就班处理眼下事物。这点至为关键，无论做什么。</strong></li>
-</ul>
-<p><strong>——《海边的卡夫卡》</strong></p>
-<p>2023.02.08 于广州。</p>
-<hr>
-<p>更新想法。</p>
-<p>昨天晚上的飞机，终于回到了上海。</p>
-<p>今天收拾了一下行李，晚上骑着我的可爱电瓶车就来实验室了（感觉车好像坏掉了，明天一定要记得去修啊！），呆在实验室心情开心的爆表了！我真是骨子里的工作狂…（也不是啦，天天在家躺着就觉得好丧，如果不做些自己觉得有意义的事情，就会觉得出去玩也不快乐…）</p>
-<p>昨晚躺床上，和舍友聊职业规划、未来blahblah的。</p>
-<p>舍友：chatgpt出来，还是觉得后端更容易被代替（因为我说前端更容易被替代），虽然也有难的技术部分（比如处理高并发场景，还有许多涉及复杂算法的场景），但大多数情况下，日常工作中就是增删改查crud。前端可能会好点，因为需要人觉得美观，而且科班出来一般都是做后端，竞争更激烈。（but我觉得前端就是拿产品+设计给的图，照着敲罢了…因为之前试着做过一段前端的工作，其实美观不美观是设计需要处理的，设计没准在不远的将来也会被代替了，更别说前端了。）</p>
-<p>舍友：居然是nlp先出现了这种模型，那cv呢？（我：我觉得可能cv要做这种多任务大预训练太费算力了。。所以目前没有人那么有钱敢这么做的哈哈哈哈。不过我估计<strong>未来都是大模型的天下（算力、数据方面）</strong>了。要么就是<strong>等一个真正的底层颠覆性的DL算法创新（算法方面）</strong>）</p>
-<p>最后我俩总结，【如果想搞钱的话】（这是前提，今天刷到一句话，”Ta聊起研究方向时能够滔滔不绝，Ta眼里闪闪发光，说读博的目的是为了尝试突破某个方向的科研桎梏“。我想，这才是一个真正的博士该有的品质吧，也蛮像我自己理想中的生活的。其实感觉自己还是蛮有科研激情的，不过自己的性格是真的坐不住静不下来）</p>
-<ul>
-<li><p>前后端等等容易被代替（聊了一下chatgpt、以及微软和openai合作的GitHub Copilot辅助写代码很好用）。pass掉做软件产品、工程向。</p>
-</li>
-<li><p>算法研究岗要读个博士，预计未来DL都是大模型的天下，高校也没有算力支撑做这些事情，除非和企业合作。pass掉工业&#x2F;学术界科研向。</p>
-</li>
-<li><p>硕士出去肯定做不了research。算法工程落地写python c++，处理数据。勉强能冲着看。但要是炼丹提指标是kpi，那可能也不是很友好。</p>
-</li>
-<li><p>搞一搞AI+金融（我俩对金融都有点兴趣），找个类似私募的单位做点东西。我觉得这条路还挺有意思的。但是转纯金融是不可能的，马太效应最明显的一个行业。</p>
-</li>
-</ul>
-<p>最简单的还是去找一些工作几年了的前辈聊一聊，感觉会少走很多的弯路。而且我觉得写代码只是程序员、研究员工作中最基础的一个环节，其实也没必要过于悲观。而且<strong>从商业角度看，软件技术，主要靠一个商业模式，要有一个好的故事，要有用户肯买账才行</strong>。</p>
-<p>今天又是没想清楚未来该何去何从的一天呢！</p>
-<p>不过能够肯定的是，以后一定要做<strong>计算机&#x2F;金融</strong>这俩方向的。</p>
-<p>先把手头的事情做好，船到桥头自然直~</p>
-<p>2023.02.13 于上海。</p>
-</blockquote>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar1.png" alt="Vanessa Ni🛸🏴‍☠️"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Vanessa Ni🛸🏴‍☠️</p><p class="is-size-6 is-block">💗I am currently a first-year postgraduate student at Fudan University. My research focuses on computer vision👁️, especially image/face inpainting and image quality assessment. 💻I graduated from Tianjin University with a Bachelor&#039;s degree in Software Engineering, and acquired a little knowledge about 2d/3d object detection. I worked as an algorithm engineer intern at CATRC and Baidu. 📙I enjoy reading (especially psychology and philosophy), traveling🧳, photography📸, working out💪, and dancing💃 in my free time. 🚀I want to become an algorithm engineer or go to the U.S. for Ph.D. 3 years later.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">13</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Growth/"><span class="level-start"><span class="level-item">Growth</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Util/"><span class="level-start"><span class="level-item">Util</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-07T13:03:34.000Z">2023-03-07</time></p><p class="title"><a href="/2023/03/07/2303072103/">Frontend | Icarus主题美化</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-05T12:40:39.000Z">2023-03-05</time></p><p class="title"><a href="/2023/03/05/2303052040/">Paper | ZITS++ Image Inpainting by Improving the Incremental Transformer on Structural Priors | arXiv2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-05T08:52:52.000Z">2023-03-05</time></p><p class="title"><a href="/2023/03/05/2303051650/">Paper | Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding | CVPR2022</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-28T11:21:54.000Z">2023-02-28</time></p><p class="title"><a href="/2023/02/28/2302281930/">Issues | Baseline MISF-CVPR2022 Reprod &amp; GIQA improve</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-26T14:47:11.000Z">2023-02-26</time></p><p class="title"><a href="/2023/02/26/2302262250/">Paper | Resolution-robust Large Mask Inpainting with Fourier Convolutions | WACV2022</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/"><span class="level-start"><span class="level-item">2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/"><span class="level-start"><span class="level-item">2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Growth/"><span class="tag">Growth</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NLP/"><span class="tag">NLP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/paper/"><span class="tag">paper</span><span class="tag">4</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Just be here now🎇</a><p class="is-size-7"><span>&copy; 2023 Vanessa Ni</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar1.png" alt="Vanessa Ni🛸🏴‍☠️"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Vanessa Ni🛸🏴‍☠️</p><p class="is-size-6 is-block">💗I am currently a first-year postgraduate student at Fudan University. My research focuses on computer vision👁️, especially image/face inpainting and image quality assessment. 💻I graduated from Tianjin University with a Bachelor&#039;s degree in Software Engineering, and acquired a little knowledge about 2d/3d object detection. I worked as an algorithm engineer intern at CATRC and Baidu. 📙I enjoy reading (especially psychology and philosophy), traveling🧳, photography📸, working out💪, and dancing💃 in my free time. 🚀I want to become an algorithm engineer or go to the U.S. for Ph.D. 3 years later.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">15</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Growth/"><span class="level-start"><span class="level-item">Growth</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Util/"><span class="level-start"><span class="level-item">Util</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-15T08:51:48.000Z">2023-03-15</time></p><p class="title"><a href="/2023/03/15/2303151651/">Trend | GPT-4 —— The winner takes all</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-14T12:03:26.000Z">2023-03-14</time></p><p class="title"><a href="/2023/03/14/2303142003/">Paper | Visual ChatGPT Talking, Drawing and Editing with Visual Foundation Models | arXiv2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-07T13:03:34.000Z">2023-03-07</time></p><p class="title"><a href="/2023/03/07/2303072103/">Frontend | Icarus主题美化</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-05T12:40:39.000Z">2023-03-05</time></p><p class="title"><a href="/2023/03/05/2303052040/">Paper | ZITS++ Image Inpainting by Improving the Incremental Transformer on Structural Priors | arXiv2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-05T08:52:52.000Z">2023-03-05</time></p><p class="title"><a href="/2023/03/05/2303051650/">Paper | Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding | CVPR2022</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/"><span class="level-start"><span class="level-item">2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/"><span class="level-start"><span class="level-item">2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Growth/"><span class="tag">Growth</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NLP/"><span class="tag">NLP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/paper/"><span class="tag">paper</span><span class="tag">5</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Just be here now🎇</a><p class="is-size-7"><span>&copy; 2023 Vanessa Ni</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
