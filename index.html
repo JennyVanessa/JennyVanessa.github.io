@@ -29,7 +29,114 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><script type="text/javascript" color="255,255,255" opacity="0.7" zIndex="-1" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Just be here now🎇</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/JennyVanessa"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-03-27T09:23:48.000Z" title="2023/3/27 17:23:48">2023-03-27</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-27T09:27:43.279Z" title="2023/3/27 17:27:43">2023-03-27</time></span><span class="level-item">5 minutes read (About 695 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/27/2303271723/">Paper | SmartBrush, Text and Shape Guided Object Inpainting with Diffusion Model | CVPR2023</a></p><div class="content"><h1 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h1><ul>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><script type="text/javascript" color="255,255,255" opacity="0.7" zIndex="-1" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Just be here now🎇</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/JennyVanessa"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-04-04T08:16:52.000Z" title="2023/4/4 16:16:52">2023-04-04</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-04-04T08:21:52.765Z" title="2023/4/4 16:21:52">2023-04-04</time></span><span class="level-item">6 minutes read (About 869 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/04/2304041616/">Paper | Perceptual Artifacts Localization for Inpainting | ECCV2022</a></p><div class="content"><h1 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h1><ul>
+<li><p>Title： <code>Perceptual Artifacts Localization for Inpainting</code></p>
+</li>
+<li><p>Keyword：Artifacts Localization（瑕疵定位）</p>
+</li>
+<li><p>Idea：利用现有的语义分割模型对generated images进行二元分割，是首次检测瑕疵区域的方法，而不是检测hole area。</p>
+</li>
+<li><p>Source</p>
+<ul>
+<li>Paper，2022年8月5号arXiv submitted，ECCV2022 Oral。<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2208.03357">Perceptual Artifacts Localization for Inpainting (arxiv.org)</a></li>
+<li>Code，<a target="_blank" rel="noopener" href="https://github.com/owenzlz/PAL4Inpaint">GitHub - owenzlz&#x2F;PAL4Inpaint: Perceptual Artifacts Localization for Inpainting, ECCV 2022 (Oral)</a>。</li>
+</ul>
+</li>
+</ul>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>现存的问题：</p>
+<ul>
+<li><p>图像修复任务是不适定的（ill-posed），在进行large holes修补时会生成<strong>瑕疵和伪影（Artifacts）</strong>。</p>
+</li>
+<li><p>在真实用户应用中，图像修复被用于<strong>前景物体去除</strong>（现有的irregular mask不如实例分割mask有效），用户更偏好于视觉上<strong>可信的背景生成</strong>（现有的有参考指标进行修复评估不合理），并<strong>迭代进行修复</strong>（缺少一个自动化定位瑕疵的方法）。</p>
+</li>
+</ul>
+<p><img src="/2023/04/04/2304041616/1.png"></p>
+<blockquote>
+<p>迭代Inpainting方法</p>
+<ul>
+<li>Su S, Yan Q, Zhu Y, et al. Blindly assess image quality in the wild guided by a self-adaptive hyper network[C]&#x2F;&#x2F;Proceedings of the IEEE&#x2F;CVF Conference on Computer Vision and Pattern Recognition. 2020: 3667-3676.</li>
+<li>Zeng Y, Lin Z, Yang J, et al. High-resolution image inpainting with iterative confidence feedback and guided upsampling[C]&#x2F;&#x2F;Computer Vision–ECCV 2020: 16th European Conference, Glasgow, UK, August 23–28, 2020, Proceedings, Part XIX 16. Springer International Publishing, 2020: 1-17.</li>
+</ul>
+</blockquote>
+<p>贡献：</p>
+<p>提出<strong>新任务</strong>：<strong>Inpainting artifacts segmentation</strong>，构建数据集用于模型评估以及迭代细化。</p>
+<ul>
+<li><strong>Dataset</strong>：针对目前的SOTA Inpainting模型的生成的有perceptual artifacts的结果进行手工标注，以进行后续的语义分割，定位感知伪影区域。（4795张图片）</li>
+<li><strong>Metric</strong>：提出一个叫做Perceptual Artifact Ratio（PAR）的评估指标，度量artifacts区域占整个Inpainted区域的比例。</li>
+<li><strong>Iterative refinement</strong>：将生成的语义分割图应用在现有的SOTA模型上，进行迭代优化。</li>
+</ul>
+<p>由于商业原因，只开源一部分数据集和推理代码，训练代码和完整数据集不开源。大概有2000张训练图片、400张测试图片、400张验证图片。</p>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><ul>
+<li>使用ProFill、CoMod-GAN、LaMa生成用于标记的图像。在hole area周围放置膨胀的包围框，方便用户定位。聘请专业人员进行两轮检查，避免“漏标记”或“过度标记”区域。在4795张图中有832张没有瑕疵，加入训练避免预测假阳性。最终发现，感知伪影区域占孔掩膜区域的平均比例为29.67%。</li>
+</ul>
+<p><img src="/2023/04/04/2304041616/2.png"></p>
+<p><img src="/2023/04/04/2304041616/3.png"></p>
+<ul>
+<li>在现有的backbone和head模型上进行训练，以及训练策略的消融。</li>
+</ul>
+<p><img src="/2023/04/04/2304041616/4.png"></p>
+<p><img src="/2023/04/04/2304041616/5.png"></p>
+<h1 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h1><ul>
+<li>不同方法生成的图片进行配对，然后进行2选1，看和人类观察者的选择一致的百分比。</li>
+</ul>
+<p><img src="/2023/04/04/2304041616/6.png"></p>
+<ul>
+<li>发现随着hole大小增加，感知瑕疵比例也在上升。</li>
+</ul>
+<p><img src="/2023/04/04/2304041616/7.png"></p>
+<ul>
+<li>进行迭代修复策略，随着迭代数的不断增加，瑕疵比例在不断下降。</li>
+</ul>
+<p><img src="/2023/04/04/2304041616/8.png"></p>
+<p><img src="/2023/04/04/2304041616/9.png"></p>
+<ul>
+<li>但是感觉迭代修复后的图片只是更平滑了（大多数情况下），并没有完全解决瑕疵的问题，所以用户才会觉得大多数情况下保持一致，不过这里想要证明能够在30%的左右的情况下提升Inpainting效果，没有显著降低原始Inpainting模型性能。</li>
+</ul>
+<p><img src="/2023/04/04/2304041616/10.png"></p>
+<p><img src="/2023/04/04/2304041616/11.png"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-04-04T08:11:21.000Z" title="2023/4/4 16:11:21">2023-04-04</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-04-04T08:16:24.788Z" title="2023/4/4 16:16:24">2023-04-04</time></span><span class="level-item">3 minutes read (About 498 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/04/04/2304041611/">Paper | High-Resolution Image Inpainting with Iterative Confidence Feedback and Guided Upsampling | ECCV2020</a></p><div class="content"><h1 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h1><ul>
+<li><p>Title： <code>High-Resolution Image Inpainting with Iterative Confidence Feedback and Guided Upsampling</code></p>
+</li>
+<li><p>Keyword：Iterative Inpainting</p>
+</li>
+<li><p>Idea：利用一个解码器分支预测置信度图，设定阈值，大于0.5的生成结果保存，小于0.5的修复结果舍弃，并进行下一次迭代修复。</p>
+</li>
+<li><p>Source</p>
+<ul>
+<li>Paper，2020年5月24号arXiv submitted，ECCV2020。<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2005.11742">High-Resolution Image Inpainting with Iterative Confidence Feedback and Guided Upsampling (arxiv.org)</a></li>
+<li>Code，只开源了API接口。<a target="_blank" rel="noopener" href="https://zengyu.me/iic/">iic (zengyu.me)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><ul>
+<li>以往的图像修复方法通常使用square-shaped or irregular holes，然而在实际场景中，用户想要去除object或scene实例片段（segment）。</li>
+</ul>
+<p><img src="/2023/04/04/2304041611/1.png"></p>
+<ul>
+<li>当时的SOTA方法在真实的Object removal request下效果不佳。</li>
+</ul>
+<p><img src="/2023/04/04/2304041611/2.png"></p>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p><img src="/2023/04/04/2304041611/3.png"></p>
+<ul>
+<li><p>在数据集上，从语义分割、视频分割等数据集收集了82020object mask，并利用random strokes（free-formed mask）和构建的object mask一同训练，避免对于object shaped holes的bias。</p>
+</li>
+<li><p>网络使用了course-to-fined架构，精细优化网络有一个编码器和两个解码器，一个生成修复结果，另一个返回预测像素值的置信度图。</p>
+</li>
+</ul>
+<p><img src="/2023/04/04/2304041611/4.png"></p>
+<ul>
+<li><p>前一项就是对掩膜区域内置信的pixel计算loss，后一项正则来保证置信pixel的数量（其中C代表置信的pixel的集合，如果没有正则，网络偏向于将所有pixel置信度设为0）。设置置信度阈值0.5，低于置信阈值的复原部分不去补全它（不置信），高于阈值的复原部分才补全回去，补全回去后就进行下一次迭代。</p>
+</li>
+<li><p>参考小尺度补全的patch相似性来进行高分辨率补全。高分辨率的patch feature map由在低分辨率patch计算的相似度来引导。</p>
+<p><img src="/2023/04/04/2304041611/5.png"></p>
+</li>
+</ul>
+<h1 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h1><p><img src="/2023/04/04/2304041611/6.png"></p>
+<ul>
+<li>在不同缺失区域比例下，超过了当时的SOTA。</li>
+</ul>
+<p><img src="/2023/04/04/2304041611/7.png"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-03-27T09:23:48.000Z" title="2023/3/27 17:23:48">2023-03-27</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-27T09:27:43.279Z" title="2023/3/27 17:27:43">2023-03-27</time></span><span class="level-item">5 minutes read (About 695 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/27/2303271723/">Paper | SmartBrush, Text and Shape Guided Object Inpainting with Diffusion Model | CVPR2023</a></p><div class="content"><h1 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h1><ul>
 <li><p>Title： <code>SmartBrush: Text and Shape Guided Object Inpainting with Diffusion Model</code></p>
 </li>
 <li><p>Keyword：<strong>Diffusion Model</strong> for Inpainting</p>
@@ -449,147 +556,7 @@
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a target="_blank" rel="noopener" href="http://www.anticme.com/2021/03/26/icarus%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/">icarus个性化配置 - Hongjie’s blog (anticme.com)</a></li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-03-05T12:40:39.000Z" title="2023/3/5 20:40:39">2023-03-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-05T12:46:39.163Z" title="2023/3/5 20:46:39">2023-03-05</time></span><span class="level-item">4 minutes read (About 558 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/05/2303052040/">Paper | ZITS++ Image Inpainting by Improving the Incremental Transformer on Structural Priors | arXiv2023</a></p><div class="content"><h1 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h1><ul>
-<li>Title： <code>ZITS++: Image Inpainting by Improving the Incremental Transformer on Structural Priors</code></li>
-<li>Keyword：Transformer, High resolution Image Inpainting</li>
-<li>Idea：之前CVPR2022会议文章的期刊版本，做了一些小改进和其他的尝试。</li>
-<li>Source<ul>
-<li>Paper，2022年10月第一版，2023年2月23日第二版（新鲜出炉的）。<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.05950">2210.05950] ZITS++: Image Inpainting by Improving the Incremental Transformer on Structural Priors (arxiv.org)</a></li>
-<li>Code，<a target="_blank" rel="noopener" href="https://github.com/DQiaole/ZITS_inpainting">DQiaole&#x2F;ZITS_inpainting: Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding (CVPR2022) (github.com)</a>，<a target="_blank" rel="noopener" href="https://dqiaole.github.io/ZITS_inpainting/">Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding (dqiaole.github.io)</a></li>
-</ul>
-</li>
-</ul>
-<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>ZITS存在的问题：</p>
-<ul>
-<li>ZITS中使用的canny边缘不能区分有意义的结构。在复杂环境中Canny边缘产生confusing textures而不是具有丰富信息的底层结构。</li>
-</ul>
-<p><img src="/2023/03/05/2303052040/1.png"></p>
-<ul>
-<li>深入研究不同的图像先验信息引导的高分辨率图像修复是必要的。</li>
-<li>提升LaMa的纹理修复性能。</li>
-</ul>
-<p>贡献点：</p>
-<ul>
-<li>在原始的ZITS上（transformer-based的边缘和线框补充），又加入了许多不同先验的实验分析和讨论，最终发现L-Edges、线框和梯度先验结合效果最好。</li>
-<li>将补全好的先验信息融合到修复网络中需要上采样，提出了一种Edge Non-Maximum Suppression（E-NMS），将冗余的边缘信息过滤掉（消除边界附近的模糊边缘）。</li>
-<li>对于LaMa进行修改，加入了<strong>Large Kernel Attention</strong>以及修改模型设计。（增益：large receptive fields and scale invariance尺度不变性。we promote the <strong>maxpool as the mask resizing strategy</strong> of PatchGAN instead of the nearest in LaMa）</li>
-</ul>
-<p><img src="/2023/03/05/2303052040/2.png"></p>
-<ul>
-<li>提供了一个高分辨率图像数据集，HR-Flickr。</li>
-</ul>
-<p><img src="/2023/03/05/2303052040/3.png"></p>
-<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p><img src="/2023/03/05/2303052040/4.png"></p>
-<ul>
-<li>提出了learning-based边缘CATS取代原来用的canny边缘。并利用E-NMS（现有的算法）过滤不确定的边缘。最终使用的先验是CAT+线框（wireframe）+梯度。</li>
-</ul>
-<p><img src="/2023/03/05/2303052040/5.png"></p>
-<ul>
-<li><p>利用扩张卷积分解large Kernel，实验中取K&#x3D;21。</p>
-</li>
-<li><p>mask resize策略：maxpool取代nearest resize（稳定训练过程）</p>
-</li>
-</ul>
-<p><img src="/2023/03/05/2303052040/6.png"></p>
-<h1 id="Evalutaion"><a href="#Evalutaion" class="headerlink" title="Evalutaion"></a>Evalutaion</h1><ul>
-<li>定量性能提升明显。</li>
-</ul>
-<p><img src="/2023/03/05/2303052040/7.png"></p>
-<ul>
-<li>定量效果也很好。</li>
-</ul>
-<p><img src="/2023/03/05/2303052040/8.png"></p>
-<ul>
-<li>人脸修复效果也很好。</li>
-</ul>
-<p><img src="/2023/03/05/2303052040/9.png"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-03-05T08:52:52.000Z" title="2023/3/5 16:52:52">2023-03-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-03-05T09:00:36.645Z" title="2023/3/5 17:00:36">2023-03-05</time></span><span class="level-item">13 minutes read (About 2019 words)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/05/2303051650/">Paper | Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding | CVPR2022</a></p><div class="content"><h1 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h1><ul>
-<li>Title： <code>Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding</code></li>
-<li>Keyword：Transformer, High resolution Image Inpainting</li>
-<li>Idea：<strong>Extract edges and contours with Transformer</strong>, Masking Positional Encoding</li>
-<li>Source<ul>
-<li>Paper，2022年3月submitted的，到现在已经一年过去了，accepted in CVPR2022。[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2203.00867">2203.00867] Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding (arxiv.org)</a></li>
-<li>Code，基于LaMa做的一些小改进。<a target="_blank" rel="noopener" href="https://github.com/DQiaole/ZITS_inpainting">DQiaole&#x2F;ZITS_inpainting: Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding (CVPR2022) (github.com)</a>，<a target="_blank" rel="noopener" href="https://dqiaole.github.io/ZITS_inpainting/">Incremental Transformer Structure Enhanced Image Inpainting with Masking Positional Encoding (dqiaole.github.io)</a></li>
-<li>PaperReading，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/496739824">CVPR2022|基于Transformer结构增强的增量式图像修复|ZITS - 知乎 (zhihu.com)</a>非常好的阅读笔记。</li>
-</ul>
-</li>
-</ul>
-<h1 id="Abstract-v1"><a href="#Abstract-v1" class="headerlink" title="Abstract v1"></a>Abstract v1</h1><p>本文是基于WACV’22的高分辨率图像修复工作LaMa进一步改进的，更偏向于<strong>自然场景的修复（更注重结构、轮廓的先验信息）</strong>。</p>
-<p>现存的问题：</p>
-<ul>
-<li><p>1）现有的方法受限于CNN<strong>有限的感受野</strong>，只能处理常规的纹理，仍存在恢复生动纹理与合理的<strong>整体结构</strong>的问题（Vivid textures and Reasonable structures）。</p>
-</li>
-<li><p>2）Attention-based模型（Transformer）虽然能更好的学习长距离依赖（Long-range dependency），但是受限于高分辨率图像推理时的<strong>Heavy Computation</strong>。</p>
-</li>
-</ul>
-<p>解决的方法（贡献）：</p>
-<ul>
-<li>1）【主要贡献】An additional structure restorer，增加一个额外的结构修复器，增量式的辅助图像修复。<ul>
-<li>在固定的低分辨率Sketch space（Gray-scale space）修复整体的结构，并可以通过上采样融入到修复过程中。</li>
-<li>Can be integrated with other pretrained inpainting models efficiently with the zero-initialized residual addition（无需额外训练，直接融入到其他Inpainting预训练模型中）。</li>
-</ul>
-</li>
-<li>2）Masking positional encoding strategy用于提升使用Large irregular mask训练的性能。</li>
-</ul>
-<h1 id="Abstract-v2"><a href="#Abstract-v2" class="headerlink" title="Abstract v2"></a>Abstract v2</h1><p>现存的问题：</p>
-<ul>
-<li>现有的Inpainting方法只能处理regular textures，由于CNN感受野有限的问题，失去了对于图像<strong>整体结构（Holistic Structure）</strong>的把控。</li>
-<li>基于attention的方法可以一定程度上解决该问题，但受限于高分辨率图像推理时的<strong>Heavy Computation</strong>。</li>
-</ul>
-<p>贡献：</p>
-<ul>
-<li>Motivation：对于高分辨率自然图像修复来说，边缘信息十分重要，如果没有对于大图像的整体理解，很难恢复场景的边缘和线条，尤其是纹理较弱的场景。Method：使用一个<strong>额外的结构恢复网络</strong>，增量式的辅助图像修复过程。具体而言：transformer-based网络，在固定的低分辨率草图空间中，修复图像的<strong>边缘和轮廓线条</strong>，而后上采样到高分辨率，融合到后续图像修复网络中。</li>
-<li><strong>Zero-initialized Residual Addition</strong>（零初始化残差融合）增量训练策略：提出的方法可以和其他的pretrained inpainting model轻易的整合在一起（许多其他利用先验信息的方法通常是多阶段多模型，训练成本高，而这个策略可以在较少的step数中快速收敛）。</li>
-<li>提出了一个<strong>Masking Positional Encoding Strategy</strong>，提升在大mask配置下的模型性能。（高分辨率、较大缺失区域的修复，模型前期会在mask区域重复产生没有语义的伪影，浪费计算量）</li>
-</ul>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
-<li>Image Inpainting Goal：The inpainted images should remain both <strong>semantically coherent textures</strong> and <strong>visually reasonable structures</strong>. 这里也给了我们一点点启发，对于人脸修复而言，语义一致性至关重要，所以利用语义分割信息来引导人脸修复是一个好的想法；而后者，整体结构的连贯性，则对于自然场景图像修复至关重要。</li>
-<li>Image Inpainting任务现存的问题<ul>
-<li>1）Limited receptive fields。面对large corrupted region和高分辨率图像时问题更加凸显。</li>
-<li>2）Missing holistic structures。缺乏整体结构，Recovering key edges and lines for scenes。</li>
-<li>3） Heavy computations。训练高分辨率图像的GAN非常tricky and costly。</li>
-<li>4） No positional information in masked regions。在大mask配置下，模型会生成没有意义伪影，浪费计算量。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>很好，我的另一个Idea别人也已经实现了，好好看好好学吧(●’◡’●)</p>
-</blockquote>
-<ul>
-<li>作者分析了LaMa的不足之处（其实非常明显），LaMa的本质是在频域内做了1×1卷积保证了相同周期性信号的关联，也就是LaMa作者想要解决的重复性纹理的修复。但是这样的方法<strong>无法确保整体结构</strong>，并且在<strong>纹理较弱的图像</strong>上性能很差。</li>
-</ul>
-<blockquote>
-<p>最先使用transformer-based做low-resolution图像修复，然后再CNN上采样超分一下的工作。</p>
-<ul>
-<li><p>Ziyu Wan, Jingbo Zhang, Dongdong Chen, and Jing Liao. High-fidelity pluralistic image completion with transformers. arXiv preprint arXiv:2103.14031, 2021.</p>
-</li>
-<li><p>Yingchen Yu, Fangneng Zhan, Rongliang Wu, Jianxiong Pan, Kaiwen Cui, Shijian Lu, Feiying Ma, Xuansong Xie, and Chunyan Miao. Diverse image inpainting with bidirectional and autoregressive transformers. arXiv preprint arXiv:2104.12335, 2021.</p>
-</li>
-</ul>
-<p>还有许多使用先验信息的网络，但通常都是多阶段图像修复，训练成本较高（trained from scratch）。</p>
-</blockquote>
-<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p><img src="/2023/03/05/2303051650/1.png"></p>
-<ul>
-<li>首先将mask、masked image（valid pixel为1，待填充区域为0，mask可视化时反转一下，待填充变为1，都是为了方便后续计算）、canny边缘提取器获得的masked edge（边缘）以及利用作者之前提出的模型获取的masked lines（线框，主要是建模两点之间的连线，所以上采样下采样时不存在歧义，但是canny边缘提取出来的信息在不同feature size提取出的边缘可能不同）。</li>
-<li>送入TSR，首先将256×256的图片下采样三次到32×32大小，然后利用基于轴向注意力和常规注意力的transformer，减少计算量提升计算效率，最后获得256×256的修复后的边缘和线框。后续利用一个简单的四层CNN网络来对于修复好的先验信息进行上采样，只用线框数据进行训练而不用线框加边缘数据，这样做能够更好的消除歧义，获得不同分辨率更加一致的先验信息。</li>
-<li>因为边缘和线框信息是稀疏的，所以利用基于门控卷积的网络来提取更关键的信息，并采用多尺度信息，也就是中间block的最后一层和上采样的三层，通过零初始化残差融合（就是做了一个简单的残差运算），和baseline LaMa的前四层融合在一起，然后训练50k进行一个增量学习微调就能显著的提升原模型的效果。</li>
-<li>至于MPE（Masking Positional Encoding），其实就是取一个3×3的all-one卷积核来和mask区域做计算，能够获得距离大mask中心的距离信息以及mask方向信息，送入到baseline网络中作为辅助信息。（黑色区域为1白色为0，很简单的卷积运算）。</li>
-</ul>
-<p><img src="/2023/03/05/2303051650/2.png"></p>
-<h1 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h1><ul>
-<li>主要针对自然场景图像修复，定性上的性能增益不是很明显。</li>
-</ul>
-<p><img src="/2023/03/05/2303051650/3.png"></p>
-<p><img src="/2023/03/05/2303051650/4.png"></p>
-<ul>
-<li>MPE这个方法更是鸡肋，出发点很好但是做的太简单了，所以也没有多高的性能增益。</li>
-</ul>
-<p><img src="/2023/03/05/2303051650/5.png"></p>
-<ul>
-<li>但是定性效果很好，主要是整体结构信息（边缘和线框）对于高分辨率的自然场景图像来说是非常关键的信息。作者之前提出的提取线框的模型，我觉得底层逻辑就像是透视图，对于空间布局来说，透视图很重要，所以修复出来的图片效果会更好。</li>
-</ul>
-<p><img src="/2023/03/05/2303051650/6.png"></p>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar1.png" alt="Vanessa Ni🛸🏴‍☠️"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Vanessa Ni🛸🏴‍☠️</p><p class="is-size-6 is-block">💗I am currently a first-year postgraduate student at Fudan University. My research focuses on computer vision👁️, especially image/face inpainting and image quality assessment. 💻I graduated from Tianjin University with a Bachelor&#039;s degree in Software Engineering, and acquired a little knowledge about 2d/3d object detection. I worked as an algorithm engineer intern at CATRC and Baidu. 📙I enjoy reading (especially psychology and philosophy), traveling🧳, photography📸, working out💪, and dancing💃 in my free time. 🚀I want to become an algorithm engineer or go to the U.S. for Ph.D. 3 years later.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">20</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/JennyVanessa" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/JennyVanessa"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Growth/"><span class="level-start"><span class="level-item">Growth</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Util/"><span class="level-start"><span class="level-item">Util</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-27T09:23:48.000Z">2023-03-27</time></p><p class="title"><a href="/2023/03/27/2303271723/">Paper | SmartBrush, Text and Shape Guided Object Inpainting with Diffusion Model | CVPR2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-25T14:16:24.000Z">2023-03-25</time></p><p class="title"><a href="/2023/03/25/2303252216/">Paper | Generative Image Inpainting with Segmentation Confusion Adversarial Training and Contrastive Learning | AAAI2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-20T11:28:02.000Z">2023-03-20</time></p><p class="title"><a href="/2023/03/20/2303201927/">Paper | CoordFill, Efficient High-Resolution Image Inpainting via Parameterized Coordinate Querying | AAAI2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-20T11:17:32.000Z">2023-03-20</time></p><p class="title"><a href="/2023/03/20/2303201917/">Paper | Spatially-Adaptive Pixelwise Networks for Fast Image Translation | CVPR2021</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-17T06:05:11.000Z">2023-03-17</time></p><p class="title"><a href="/2023/03/17/2303171405/">Growth | Be a Techno-Optimist</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/"><span class="level-start"><span class="level-item">2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/"><span class="level-start"><span class="level-item">2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Growth/"><span class="tag">Growth</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NLP/"><span class="tag">NLP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/paper/"><span class="tag">paper</span><span class="tag">9</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Just be here now🎇</a><p class="is-size-7"><span>&copy; 2023 Vanessa Ni</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar1.png" alt="Vanessa Ni🛸🏴‍☠️"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Vanessa Ni🛸🏴‍☠️</p><p class="is-size-6 is-block">💗I am currently a first-year postgraduate student at Fudan University. My research focuses on computer vision👁️, especially image/face inpainting and image quality assessment. 💻I graduated from Tianjin University with a Bachelor&#039;s degree in Software Engineering, and acquired a little knowledge about 2d/3d object detection. I worked as an algorithm engineer intern at CATRC and Baidu. 📙I enjoy reading (especially psychology and philosophy), traveling🧳, photography📸, working out💪, and dancing💃 in my free time. 🚀I want to become an algorithm engineer or go to the U.S. for Ph.D. 3 years later.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">22</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/JennyVanessa" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/JennyVanessa"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Growth/"><span class="level-start"><span class="level-item">Growth</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Util/"><span class="level-start"><span class="level-item">Util</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-04T08:16:52.000Z">2023-04-04</time></p><p class="title"><a href="/2023/04/04/2304041616/">Paper | Perceptual Artifacts Localization for Inpainting | ECCV2022</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-04T08:11:21.000Z">2023-04-04</time></p><p class="title"><a href="/2023/04/04/2304041611/">Paper | High-Resolution Image Inpainting with Iterative Confidence Feedback and Guided Upsampling | ECCV2020</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-27T09:23:48.000Z">2023-03-27</time></p><p class="title"><a href="/2023/03/27/2303271723/">Paper | SmartBrush, Text and Shape Guided Object Inpainting with Diffusion Model | CVPR2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-25T14:16:24.000Z">2023-03-25</time></p><p class="title"><a href="/2023/03/25/2303252216/">Paper | Generative Image Inpainting with Segmentation Confusion Adversarial Training and Contrastive Learning | AAAI2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-20T11:28:02.000Z">2023-03-20</time></p><p class="title"><a href="/2023/03/20/2303201927/">Paper | CoordFill, Efficient High-Resolution Image Inpainting via Parameterized Coordinate Querying | AAAI2023</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">20</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/"><span class="level-start"><span class="level-item">2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/"><span class="level-start"><span class="level-item">2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Growth/"><span class="tag">Growth</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NLP/"><span class="tag">NLP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/paper/"><span class="tag">paper</span><span class="tag">11</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Just be here now🎇</a><p class="is-size-7"><span>&copy; 2023 Vanessa Ni</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
