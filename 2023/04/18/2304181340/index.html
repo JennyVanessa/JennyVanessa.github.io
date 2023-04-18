@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Paper | SDD-FIQA, Unsupervised Face Image Quality Assessment with Similarity Distribution Distance | CVPR2021 - Vanessa&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Vanessa&#039;s blog🎀"><meta name="msapplication-TileImage" content="/img/my_favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vanessa&#039;s blog🎀"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Background Knowledge inter-class（类间）和intra-class（类内）都是图像分类中的术语，用于描述两种不同的特征。   比如人脸识别任务中用来训练的数据集分为好多不同的人，每个人就是一个类别，每个类别中又有好多单独的图片。   inter-class代表类别间的特征，比如人脸识别中不同的人脸组件特征之间的差异。 intra-class代表类别内的特征，比如同一个"><meta property="og:type" content="blog"><meta property="og:title" content="Paper | SDD-FIQA, Unsupervised Face Image Quality Assessment with Similarity Distribution Distance | CVPR2021"><meta property="og:url" content="https://jennyvanessa.github.io/2023/04/18/2304181340/"><meta property="og:site_name" content="Vanessa&#039;s blog"><meta property="og:description" content="Background Knowledge inter-class（类间）和intra-class（类内）都是图像分类中的术语，用于描述两种不同的特征。   比如人脸识别任务中用来训练的数据集分为好多不同的人，每个人就是一个类别，每个类别中又有好多单独的图片。   inter-class代表类别间的特征，比如人脸识别中不同的人脸组件特征之间的差异。 intra-class代表类别内的特征，比如同一个"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://jennyvanessa.github.io/2023/04/18/2304181340/1.png"><meta property="og:image" content="https://jennyvanessa.github.io/2023/04/18/2304181340/2.png"><meta property="og:image" content="https://jennyvanessa.github.io/2023/04/18/2304181340/3.png"><meta property="og:image" content="https://jennyvanessa.github.io/2023/04/18/2304181340/4.png"><meta property="og:image" content="https://jennyvanessa.github.io/2023/04/18/2304181340/5.png"><meta property="og:image" content="https://jennyvanessa.github.io/2023/04/18/2304181340/6.png"><meta property="og:image" content="https://jennyvanessa.github.io/2023/04/18/2304181340/7.png"><meta property="article:published_time" content="2023-04-18T05:43:29.000Z"><meta property="article:modified_time" content="2023-04-18T05:46:49.962Z"><meta property="article:author" content="Vanessa Ni"><meta property="article:tag" content="paper"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://jennyvanessa.github.io/2023/04/18/2304181340/1.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://jennyvanessa.github.io/2023/04/18/2304181340/"},"headline":"Paper | SDD-FIQA, Unsupervised Face Image Quality Assessment with Similarity Distribution Distance | CVPR2021","image":["https://jennyvanessa.github.io/2023/04/18/2304181340/1.png","https://jennyvanessa.github.io/2023/04/18/2304181340/2.png","https://jennyvanessa.github.io/2023/04/18/2304181340/3.png","https://jennyvanessa.github.io/2023/04/18/2304181340/4.png","https://jennyvanessa.github.io/2023/04/18/2304181340/5.png","https://jennyvanessa.github.io/2023/04/18/2304181340/6.png","https://jennyvanessa.github.io/2023/04/18/2304181340/7.png"],"datePublished":"2023-04-18T05:43:29.000Z","dateModified":"2023-04-18T05:46:49.962Z","author":{"@type":"Person","name":"Vanessa Ni"},"publisher":{"@type":"Organization","name":"Vanessa's blog","logo":{"@type":"ImageObject","url":{"text":"Just be here now🎇"}}},"description":"Background Knowledge inter-class（类间）和intra-class（类内）都是图像分类中的术语，用于描述两种不同的特征。   比如人脸识别任务中用来训练的数据集分为好多不同的人，每个人就是一个类别，每个类别中又有好多单独的图片。   inter-class代表类别间的特征，比如人脸识别中不同的人脸组件特征之间的差异。 intra-class代表类别内的特征，比如同一个"}</script><link rel="canonical" href="https://jennyvanessa.github.io/2023/04/18/2304181340/"><link rel="icon" href="/img/my_favicon.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/monokai.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body class="is-2-column"><script type="text/javascript" color="255,255,255" opacity="0.7" zIndex="-1" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Just be here now🎇</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/JennyVanessa"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-04-18T05:43:29.000Z" title="2023/4/18 13:43:29">2023-04-18</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-04-18T05:46:49.962Z" title="2023/4/18 13:46:49">2023-04-18</time></span><span class="level-item">8 minutes read (About 1136 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Paper | SDD-FIQA, Unsupervised Face Image Quality Assessment with Similarity Distribution Distance | CVPR2021</h1><div class="content"><h1 id="Background-Knowledge"><a href="#Background-Knowledge" class="headerlink" title="Background Knowledge"></a>Background Knowledge</h1><ul>
+<li><strong>inter-class（类间）</strong>和<strong>intra-class（类内）</strong>都是图像分类中的术语，用于描述两种不同的特征。</li>
+</ul>
+<blockquote>
+<p>比如人脸识别任务中用来训练的数据集分为好多不同的人，每个人就是一个类别，每个类别中又有好多单独的图片。</p>
+</blockquote>
+<ul>
+<li>inter-class代表类别间的特征，比如人脸识别中不同的人脸组件特征之间的差异。</li>
+<li>intra-class代表类别内的特征，比如同一个人在不同状态下脸部的特征的差异（生气和开心的样子肯定不一样）</li>
+</ul>
+<blockquote>
+<p>对于人脸识别任务来说，肯定是希望inter-class特征差异很大，intra-class特征差异很小，这样我们的模型才能更好的识别不同的类。</p>
+</blockquote>
+<h1 id="Info"><a href="#Info" class="headerlink" title="Info"></a>Info</h1><ul>
+<li>Title： <code>SDD-FIQA, Unsupervised Face Image Quality Assessment with Similarity Distribution Distance</code></li>
+<li>Keyword：Face Image Quality Assessment，Distribution Distance</li>
+<li>Idea：利用类内相似度分布和类间相似度分布之间的Wasserstein距离生成人脸图像质量伪标签。</li>
+<li>Source<ul>
+<li>Paper，2021年3月10号arXiv submitted，CVPR2021（比较早的文章了）。<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2103.05977">SDD-FIQA: Unsupervised Face Image Quality Assessment with Similarity Distribution Distance (arxiv.org)</a></li>
+<li>Code，<a target="_blank" rel="noopener" href="https://github.com/Slinene/SDD-FIQA">Slinene/SDD-FIQA: This repo is the official released code of SDD-FIQA (CVPR-2021) (github.com)</a> <a target="_blank" rel="noopener" href="https://github.com/Tencent/TFace/tree/quality">Tencent/TFace at quality (github.com)</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>存在的问题：</p>
+<ul>
+<li>大多数基于人脸识别特征的方法只考虑了部分的类内信息，忽略了类间信息。作者认为一张高质量的人脸图片应该与其同类样本相似而与类外样本不相似。</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li>提出一个新的无监督FIQA方法，利用类内相似度分布和类间相似度分布之间的Wasserstein距离生成人脸图像质量伪标签。然后，利用这些质量伪标签进行无监督人脸质量回归网络训练，从而获得一个质量评估模型。</li>
+</ul>
+<h1 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h1><p><img src="/2023/04/18/2304181340/1.png"></p>
+<ul>
+<li><p>从人脸识别效果来看，一张高质量的人脸图像更容易被识别正确，这表示它与类内的相似性距离较近，与其它类间的相似性距离较远。换句话来说，它的类内相似性分布与类间相似性分布距离较远。图像质量与类内-类间相似度距离如下图所示，低质量人脸WD距离较近，高质量人脸WD距离较远。</p>
+<p><img src="/2023/04/18/2304181340/2.png"></p>
+</li>
+<li><p>图中红点表示目标样本，绿点表示类内样本，黄点表示类间样本。类内相似性分布（Pos-Sim）与类间相似性分布（Neg-Sim）的WD距离为质量分数伪标签，质量分数结果如图中右侧所示。</p>
+</li>
+</ul>
+<p><img src="/2023/04/18/2304181340/3.png"></p>
+<ul>
+<li><p>假设X，Y，F分别表示图片集、id标签集、识别特征集，构建一个三元组数据集。</p>
+<p><img src="/2023/04/18/2304181340/4.png"></p>
+</li>
+<li><p>利用同一个id下的两个样本构建正样本对（intra-class，类内），不同id的两个样本构建负样本对（inter-class，类间），对于每一个训练样本<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex;" xmlns="http://www.w3.org/2000/svg" width="2.034ex" height="1.357ex" role="img" focusable="false" viewBox="0 -442 899 599.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g><g data-mml-node="mi" transform="translate(605,-150) scale(0.707)"><path data-c="1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></g></g></g></g></svg></mjx-container>，正样本对和负样本对的相似度集合分别为：</p>
+<p><img src="/2023/04/18/2304181340/5.png"></p>
+</li>
+<li><p>其中尖括号中的内容代表了两个样本的识别特征嵌入空间中的余弦距离。</p>
+</li>
+<li><p>文章使用Wasserstein距离度量正样本相似度和负样本相似度分布情况。</p>
+</li>
+</ul>
+<p><img src="/2023/04/18/2304181340/6.png"></p>
+<ul>
+<li>使用生成的质量分数标签训练质量回归网络。在训练过程中利用人脸识别模型进行知识迁移，提升质量回归模型的预测结果与识别的匹配度。去掉embedding和原来的分类层，添加一个FC层，采用dropout方式防止训练过程中过拟合，使用Huber loss回归损失函数训练质量回归网络。相比MSE，Huber损失对数据中异常值更具鲁棒性。</li>
+</ul>
+<h1 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h1><ul>
+<li>结果为质量回归模型与人脸识别模型均采用ResNet50-MSIM的结果,表中结果显示使用SDD-FIQA质量评估后，在固定误识率（FMR）下，人脸识别结果在LFW、Adience、IJB-C三个数据集上均优于目前最好的质量评估方法。</li>
+</ul>
+<p><img src="/2023/04/18/2304181340/7.png"></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Paper | SDD-FIQA, Unsupervised Face Image Quality Assessment with Similarity Distribution Distance | CVPR2021</p><p><a href="https://jennyvanessa.github.io/2023/04/18/2304181340/">https://jennyvanessa.github.io/2023/04/18/2304181340/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Vanessa Ni</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2023-04-18</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-04-18</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/paper/">paper</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=63fb1795595f5b00134e8c46&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><a class="button donate" data-type="paypal" onclick="document.getElementById(&#039;paypal-donate-form&#039;).submit()"><span class="icon is-small"><i class="fab fa-paypal"></i></span><span>Paypal</span></a><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener" id="paypal-donate-form"><input type="hidden" name="cmd" value="_donations"><input type="hidden" name="business" value="22210240038@m.fudan.edu.cn"><input type="hidden" name="currency_code" value="USD"></form><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/04/10/2304101122/"><span class="level-item">Paper | Generative Diffusion Prior for Unified Image Restoration and Enhancement | CVPR2023</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://jennyvanessa.github.io/2023/04/18/2304181340/';
+            this.page.identifier = '2023/04/18/2304181340/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'Nora' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Background-Knowledge"><span class="level-left"><span class="level-item">1</span><span class="level-item">Background Knowledge</span></span></a></li><li><a class="level is-mobile" href="#Info"><span class="level-left"><span class="level-item">2</span><span class="level-item">Info</span></span></a></li><li><a class="level is-mobile" href="#Abstract"><span class="level-left"><span class="level-item">3</span><span class="level-item">Abstract</span></span></a></li><li><a class="level is-mobile" href="#Method"><span class="level-left"><span class="level-item">4</span><span class="level-item">Method</span></span></a></li><li><a class="level is-mobile" href="#Evaluation"><span class="level-left"><span class="level-item">5</span><span class="level-item">Evaluation</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar1.png" alt="Vanessa Ni🛸🏴‍☠️"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Vanessa Ni🛸🏴‍☠️</p><p class="is-size-6 is-block">💗I am currently a first-year postgraduate student at Fudan University. My research focuses on computer vision👁️, especially image/face inpainting and image quality assessment. 💻I graduated from Tianjin University with a Bachelor&#039;s degree in Software Engineering, and acquired a little knowledge about 2d/3d object detection. I worked as an algorithm engineer intern at CATRC and Baidu. 📙I enjoy reading (especially psychology and philosophy), traveling🧳, photography📸, working out💪, and dancing💃 in my free time. 🚀I want to become an algorithm engineer or go to the U.S. for Ph.D. 3 years later.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">25</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/JennyVanessa" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/JennyVanessa"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Growth/"><span class="level-start"><span class="level-item">Growth</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Util/"><span class="level-start"><span class="level-item">Util</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-18T05:43:29.000Z">2023-04-18</time></p><p class="title"><a href="/2023/04/18/2304181340/">Paper | SDD-FIQA, Unsupervised Face Image Quality Assessment with Similarity Distribution Distance | CVPR2021</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-10T03:22:58.000Z">2023-04-10</time></p><p class="title"><a href="/2023/04/10/2304101122/">Paper | Generative Diffusion Prior for Unified Image Restoration and Enhancement | CVPR2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-08T07:25:40.000Z">2023-04-08</time></p><p class="title"><a href="/2023/04/08/2304081525/">Paper | Inst-Inpaint, Instructing to Remove Objects with Diffusion Models | arXiv2023</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-04T08:16:52.000Z">2023-04-04</time></p><p class="title"><a href="/2023/04/04/2304041616/">Paper | Perceptual Artifacts Localization for Inpainting | ECCV2022</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-04T08:11:21.000Z">2023-04-04</time></p><p class="title"><a href="/2023/04/04/2304041611/">Paper | High-Resolution Image Inpainting with Iterative Confidence Feedback and Guided Upsampling | ECCV2020</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">23</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/"><span class="level-start"><span class="level-item">2022</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/"><span class="level-start"><span class="level-item">2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Growth/"><span class="tag">Growth</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/NLP/"><span class="tag">NLP</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/paper/"><span class="tag">paper</span><span class="tag">14</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Just be here now🎇</a><p class="is-size-7"><span>&copy; 2023 Vanessa Ni</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
